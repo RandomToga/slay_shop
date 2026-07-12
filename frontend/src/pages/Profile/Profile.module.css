@@ -1,0 +1,920 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+:global(*) {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:global(body) {
+    font-family: "Montserrat", sans-serif;
+    background: #fbf8f6;
+    color: #444;
+}
+
+/* ========================= */
+/* BACKGROUND */
+/* ========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+
+    background:
+        radial-gradient(circle at 12% 20%, rgba(255,186,209,.45), transparent 30%),
+        radial-gradient(circle at 88% 18%, rgba(255,230,176,.40), transparent 30%),
+        radial-gradient(circle at 22% 88%, rgba(194,236,144,.40), transparent 30%),
+        radial-gradient(circle at 90% 85%, rgba(255,255,170,.35), transparent 35%),
+        #faf8f6;
+
+    filter: blur(60px);
+}
+
+/* ========================= */
+/* TITLE */
+/* ========================= */
+
+.titleBlock {
+
+    text-align: center;
+
+    margin-top: 60px;
+    margin-bottom: 50px;
+
+    position: relative;
+}
+
+.note {
+
+    position: absolute;
+
+    left: 10%;
+    top: -10px;
+
+    background: white;
+
+    padding: 12px 22px;
+
+    border-radius: 999px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color: #666;
+
+    transform: rotate(-10deg);
+
+    box-shadow: 0 15px 35px rgba(0,0,0,.08);
+}
+
+.titleBlock h1 {
+
+    font-size: 64px;
+
+    letter-spacing: 6px;
+
+    color: #db6b96;
+
+    font-weight: 800;
+}
+
+.titleBlock p {
+
+    margin-top: 14px;
+
+    color: #777;
+
+    font-size: 15px;
+}
+
+/* ========================= */
+/* GRID */
+/* ========================= */
+
+.wrapper{
+
+    width:min(1180px,92%);
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1.2fr .95fr;
+
+    gap:30px;
+
+    padding-bottom:60px;
+}
+
+/* ========================= */
+/* GLASS CARD */
+/* ========================= */
+
+.profileCard,
+.ordersCard,
+.addressCard{
+
+    background:rgba(255,255,255,.88);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:28px;
+
+    padding:28px;
+
+    border:1px solid rgba(255,255,255,.55);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.08);
+
+    transition:.3s;
+}
+
+.profileCard:hover,
+.ordersCard:hover,
+.addressCard:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.10);
+}
+
+.addressCard{
+
+    grid-column:1 / 3;
+}
+
+/* ========================= */
+/* TITLES */
+/* ========================= */
+
+.profileCard h2,
+.ordersCard h2,
+.addressCard h2{
+
+    font-size:28px;
+
+    color:#e36f99;
+
+    font-weight:700;
+
+    margin-bottom:28px;
+}
+
+/* ========================= */
+/* FORM */
+/* ========================= */
+
+.field{
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-bottom:18px;
+}
+
+.field label{
+
+    margin-bottom:8px;
+
+    color:#8a8a8a;
+
+    font-size:13px;
+
+    font-weight:600;
+}
+
+.field input{
+
+    width:100%;
+
+    height:48px;
+
+    padding:0 18px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#fff;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(228,228,228,.9);
+
+    font-size:15px;
+
+    transition:.25s;
+}
+
+.field input:focus{
+
+    outline:none;
+
+    box-shadow:
+        inset 0 0 0 2px #df6f97;
+}
+
+.field input:disabled{
+
+    background:#f7f7f7;
+
+    color:#999;
+}
+
+/* ========================= */
+/* EMPTY */
+/* ========================= */
+
+.empty{
+
+    color:#999;
+
+    text-align:center;
+
+    padding:35px 0;
+
+    font-size:15px;
+}
+
+/* ========================= */
+/* BUTTONS */
+/* ========================= */
+
+.mainButton,
+.addButton,
+.secondaryButton {
+
+    width: 100%;
+
+    height: 52px;
+
+    margin-top: 18px;
+
+    border: none;
+
+    border-radius: 999px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    color: white;
+
+    background: linear-gradient(90deg,#c4df72,#ec8db2);
+
+    transition: .3s;
+}
+
+.mainButton:hover,
+.addButton:hover,
+.secondaryButton:hover{
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 12px 30px rgba(225,110,150,.35);
+}
+
+.cancelButton{
+
+    width:100%;
+
+    height:50px;
+
+    margin-top:12px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:#ececec;
+
+    color:#666;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.cancelButton:hover{
+
+    background:#dfdfdf;
+}
+
+.deleteButton{
+
+    border:none;
+
+    background:#ef92b5;
+
+    color:white;
+
+    padding:10px 22px;
+
+    border-radius:999px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.25s;
+}
+
+.deleteButton:hover{
+
+    background:#e5739d;
+}
+
+/* ========================= */
+/* ORDERS */
+/* ========================= */
+
+.order{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 22px;
+
+    margin-bottom:16px;
+
+    background:white;
+
+    border-radius:20px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+
+    transition:.25s;
+}
+
+.order:hover{
+
+    transform:translateY(-2px);
+}
+
+.order strong{
+
+    color:#666;
+
+    font-size:17px;
+}
+
+.order p{
+
+    margin-top:6px;
+
+    color:#888;
+
+    font-size:14px;
+}
+
+.status{
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    color:white;
+
+    font-size:13px;
+
+    font-weight:700;
+}
+
+/* цвета статусов */
+
+.completed,
+.delivered{
+
+    background:#b8d86b;
+}
+
+.processing{
+
+    background:#ffd869;
+
+    color:#666;
+}
+
+.pending{
+
+    background:#ffb867;
+}
+
+.cancelled{
+
+    background:#ff8a8a;
+}
+
+.shipped{
+
+    background:#74b4ff;
+}
+
+/* ========================= */
+/* ADDRESS */
+/* ========================= */
+
+.address{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    margin-bottom:16px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:white;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+
+    transition:.25s;
+}
+
+.address:hover{
+
+    transform:translateY(-2px);
+}
+
+.address p{
+
+    line-height:1.7;
+
+    color:#666;
+
+    font-size:15px;
+}
+
+.addressForm{
+
+    margin-top:20px;
+}
+
+.formButtons{
+
+    display:flex;
+
+    gap:14px;
+
+    margin-top:18px;
+}
+
+
+/* ========================= */
+/* LOADING */
+/* ========================= */
+
+.loading{
+
+    min-height:70vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:18px;
+}
+
+.spinner{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    border:4px solid #ececec;
+
+    border-top:4px solid #df6f97;
+
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+
+    to{
+
+        transform:rotate(360deg);
+    }
+}
+
+/* ========================= */
+/* ANIMATIONS */
+/* ========================= */
+
+.profileCard,
+.ordersCard,
+.addressCard{
+
+    animation:fadeUp .6s ease;
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+    }
+}
+
+/* ========================= */
+/* SCROLLBAR */
+/* ========================= */
+
+:global(::-webkit-scrollbar){
+
+    width:10px;
+}
+
+:global(::-webkit-scrollbar-track){
+
+    background:#faf8f6;
+}
+
+:global(::-webkit-scrollbar-thumb){
+
+    background:#ebb2c9;
+
+    border-radius:20px;
+}
+
+:global(::-webkit-scrollbar-thumb:hover){
+
+    background:#df6f97;
+}
+
+/* ========================= */
+/* LINKS */
+/* ========================= */
+
+:global(button){
+
+    font-family:"Montserrat",sans-serif;
+}
+
+:global(input){
+
+    font-family:"Montserrat",sans-serif;
+}
+
+/* ========================= */
+/* TABLET */
+/* ========================= */
+
+@media (max-width:992px){
+
+    .wrapper{
+
+        grid-template-columns:1fr;
+
+        width:94%;
+    }
+
+    .addressCard{
+
+        grid-column:auto;
+    }
+
+    .titleBlock h1{
+
+        font-size:52px;
+    }
+
+    .note{
+
+        left:5%;
+    }
+
+    .formButtons{
+
+        flex-direction:column;
+    }
+
+    .formButtons button{
+
+        width:100%;
+    }
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width:768px){
+
+    .titleBlock{
+
+        margin-top:35px;
+    }
+
+    .titleBlock h1{
+
+        font-size:42px;
+
+        letter-spacing:2px;
+    }
+
+    .titleBlock p{
+
+        font-size:14px;
+    }
+
+    .note{
+
+        display:none;
+    }
+
+    .profileCard,
+    .ordersCard,
+    .addressCard{
+
+        padding:22px;
+
+        border-radius:22px;
+    }
+
+    .profileCard h2,
+    .ordersCard h2,
+    .addressCard h2{
+
+        font-size:24px;
+    }
+
+    .order{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:14px;
+    }
+
+    .status{
+
+        align-self:flex-start;
+    }
+
+    .address{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+    }
+
+    .deleteButton{
+
+        width:100%;
+    }
+
+    .mainButton,
+    .secondaryButton,
+    .addButton,
+    .cancelButton{
+
+        height:48px;
+    }
+}
+
+/* ========================= */
+/* SMALL MOBILE */
+/* ========================= */
+
+@media (max-width:480px){
+
+    .wrapper{
+
+        width:96%;
+    }
+
+    .titleBlock h1{
+
+        font-size:34px;
+    }
+
+    .profileCard,
+    .ordersCard,
+    .addressCard{
+
+        padding:18px;
+    }
+
+    .field input{
+
+        height:44px;
+
+        font-size:14px;
+    }
+
+    .order{
+
+        padding:16px;
+    }
+
+    .address{
+
+        padding:16px;
+    }
+
+    .status{
+
+        font-size:12px;
+
+        padding:8px 14px;
+    }
+}
+
+/* ========================= */
+/* ORDER ITEMS IMPROVED */
+/* ========================= */
+
+.order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    transition: all 0.25s ease;
+    gap: 15px;
+}
+
+.order:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+.orderInfo {
+    flex: 1;
+}
+
+.orderHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.orderHeader strong {
+    color: #444;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.orderDate {
+    color: #999;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.orderDetails {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.orderTotal {
+    color: #df6f97;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.orderItems {
+    color: #aaa;
+    font-size: 13px;
+}
+
+/* ========================= */
+/* STATUS COLORS */
+/* ========================= */
+
+.status {
+    padding: 8px 18px;
+    border-radius: 999px;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    min-width: 80px;
+    text-align: center;
+}
+
+/* Статусы заказов */
+.new {
+    background: linear-gradient(135deg, #a8d8ea, #7ec8e3);
+    color: #1a5a7a;
+}
+
+.processing {
+    background: linear-gradient(135deg, #ffd93d, #f6c90e);
+    color: #7a6b1a;
+}
+
+.shipped {
+    background: linear-gradient(135deg, #6ec6ff, #4a9eff);
+    color: #fff;
+}
+
+.delivered {
+    background: linear-gradient(135deg, #6fcf97, #27ae60);
+    color: #fff;
+}
+
+.completed {
+    background: linear-gradient(135deg, #6fcf97, #27ae60);
+    color: #fff;
+}
+
+.cancelled {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: #fff;
+}
+
+.unknown {
+    background: #e0e0e0;
+    color: #666;
+}
+
+/* ========================= */
+/* RESPONSIVE FOR ORDERS */
+/* ========================= */
+
+@media (max-width: 768px) {
+    .order {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 16px 18px;
+    }
+
+    .orderHeader {
+        flex-wrap: wrap;
+    }
+
+    .orderDetails {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .status {
+        align-self: flex-start;
+        font-size: 12px;
+        padding: 6px 14px;
+        min-width: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .order {
+        padding: 14px 16px;
+    }
+
+    .orderHeader strong {
+        font-size: 15px;
+    }
+
+    .orderTotal {
+        font-size: 14px;
+    }
+
+    .orderItems {
+        font-size: 12px;
+    }
+
+    .status {
+        font-size: 11px;
+        padding: 5px 12px;
+        min-width: 50px;
+    }
+}

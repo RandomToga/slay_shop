@@ -1,0 +1,148 @@
+### ============================================
+### ПЕРЕМЕННЫЕ
+### ============================================
+@baseUrl = http://localhost:8000
+
+### 1. Создание адреса доставки для пользователя
+# @name createAddress
+POST http://127.0.0.1:8000/api/users/addresses/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDMwNTQ2LCJpYXQiOjE3ODM0Mjg3NDYsImp0aSI6IjVmZDdjN2Y3NGY4NjQyZjRhNzYyZThkZGI2ODFkYmJlIiwidXNlcl9pZCI6IjMifQ.A_Yfe5InrxsC8ry0oBVOy2ciysJ3TW0Lc3sGGqvpOkY
+Content-Type: application/json
+
+{
+    "city": "Москва",
+    "street": "Нагатинская",
+    "house": "10",
+    "apartment": "25"
+}
+
+
+### 2. Создание второго адреса
+POST http://127.0.0.1:8000/api/users/addresses/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDMwNTQ2LCJpYXQiOjE3ODM0Mjg3NDYsImp0aSI6IjVmZDdjN2Y3NGY4NjQyZjRhNzYyZThkZGI2ODFkYmJlIiwidXNlcl9pZCI6IjMifQ.A_Yfe5InrxsC8ry0oBVOy2ciysJ3TW0Lc3sGGqvpOkY
+
+{
+    "city": "Санкт-Петербург",
+    "street": "Невский",
+    "house": "15",
+    "apartment": "5"
+}
+
+### ============================================
+### ТЕСТЫ ПОЛЬЗОВАТЕЛЬСКИХ ЭНДПОИНТОВ ORDERS
+### ============================================
+
+### 3. Создание заказа (успешный)
+POST {{baseUrl}}/api/orders/create/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDMxMDc3LCJpYXQiOjE3ODM0MjkyNzcsImp0aSI6Ijk2Y2E2ZGVjMzFhNzQyM2I5YjNjYmJlOTBlOWNhZDdjIiwidXNlcl9pZCI6IjMifQ.am1KfutlCkLUa_UenyyDS3urjlSJWIXjyvpU7TcGpsY
+
+{
+    "address_id": 2,
+    "payment_method_id": 1
+}
+
+
+### 4. Попытка создания заказа без авторизации
+POST {{baseUrl}}/api/orders/create/
+Content-Type: application/json
+
+{
+    "address_id": 2,
+    "payment_method_id": 1
+}
+
+
+### 5. Попытка создания заказа без address_id
+POST {{baseUrl}}/api/orders/create/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDMxMDc3LCJpYXQiOjE3ODM0MjkyNzcsImp0aSI6Ijk2Y2E2ZGVjMzFhNzQyM2I5YjNjYmJlOTBlOWNhZDdjIiwidXNlcl9pZCI6IjMifQ.am1KfutlCkLUa_UenyyDS3urjlSJWIXjyvpU7TcGpsY
+
+{
+    "payment_method_id": 1
+}
+
+### 6. Попытка создания заказа с невалидным payment_method_id
+POST {{baseUrl}}/api/orders/create/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDMxMDc3LCJpYXQiOjE3ODM0MjkyNzcsImp0aSI6Ijk2Y2E2ZGVjMzFhNzQyM2I5YjNjYmJlOTBlOWNhZDdjIiwidXNlcl9pZCI6IjMifQ.am1KfutlCkLUa_UenyyDS3urjlSJWIXjyvpU7TcGpsY
+
+{
+    "address_id": 2,
+    "payment_method_id": 999
+}
+
+### 7. Получение списка заказов пользователя
+GET {{baseUrl}}/api/orders/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNTA1ODIyLCJpYXQiOjE3ODM1MDQwMjIsImp0aSI6ImY0Yzk5ZmVhMmM0ZDQyZTY4MTljYTlkNmI1YTg4Yjk4IiwidXNlcl9pZCI6IjMifQ.ZuCwnPXLMFZNxrYKjagI-prq3oMMNpUgI2cUw6HNfZQ
+
+### 17. Просмотр деталей конкретного заказа
+GET {{baseUrl}}/api/orders/1/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDMxMDc3LCJpYXQiOjE3ODM0MjkyNzcsImp0aSI6Ijk2Y2E2ZGVjMzFhNzQyM2I5YjNjYmJlOTBlOWNhZDdjIiwidXNlcl9pZCI6IjMifQ.am1KfutlCkLUa_UenyyDS3urjlSJWIXjyvpU7TcGpsY
+
+
+### 8. Попытка просмотра заказов без авторизации
+GET {{baseUrl}}/api/orders/
+Content-Type: application/json
+
+
+### ============================================
+### ТЕСТЫ АДМИНИСТРАТИВНЫХ ЭНДПОИНТОВ
+### ============================================
+
+### 9. Получение всех заказов (менеджер)
+GET {{baseUrl}}/api/admin/orders/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDMyMjI0LCJpYXQiOjE3ODM0MzA0MjQsImp0aSI6IjVlZWFhYWY3ODgxODRkNTViYWE4M2YwY2FkOWRmZDRjIiwidXNlcl9pZCI6IjIifQ.RSvOBnZL9Pi3CGjsXawJFmQ_4p1un3FgRz085rohrtQ
+
+### 10. Получение заказов с фильтром по статусу (по ID)
+GET {{baseUrl}}/api/admin/orders/?status=1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDMyMjI0LCJpYXQiOjE3ODM0MzA0MjQsImp0aSI6IjVlZWFhYWY3ODgxODRkNTViYWE4M2YwY2FkOWRmZDRjIiwidXNlcl9pZCI6IjIifQ.RSvOBnZL9Pi3CGjsXawJFmQ_4p1un3FgRz085rohrtQ
+
+### 11. Получение заказов с фильтром по статусу (по названию)
+GET {{baseUrl}}/api/admin/orders/?status=Новый
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDMyMjI0LCJpYXQiOjE3ODM0MzA0MjQsImp0aSI6IjVlZWFhYWY3ODgxODRkNTViYWE4M2YwY2FkOWRmZDRjIiwidXNlcl9pZCI6IjIifQ.RSvOBnZL9Pi3CGjsXawJFmQ_4p1un3FgRz085rohrtQ
+
+### 12. Попытка доступа к админ-эндпоинтам обычным пользователем
+GET {{baseUrl}}/api/admin/orders/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDMxMDc3LCJpYXQiOjE3ODM0MjkyNzcsImp0aSI6Ijk2Y2E2ZGVjMzFhNzQyM2I5YjNjYmJlOTBlOWNhZDdjIiwidXNlcl9pZCI6IjMifQ.am1KfutlCkLUa_UenyyDS3urjlSJWIXjyvpU7TcGpsY
+
+
+### 13. Попытка доступа к админ-эндпоинтам без авторизации
+GET {{baseUrl}}/api/admin/orders/
+Content-Type: application/json
+
+### 14. Просмотр деталей любого заказа (менеджер)
+GET {{baseUrl}}/api/admin/orders/1/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDMyMjI0LCJpYXQiOjE3ODM0MzA0MjQsImp0aSI6IjVlZWFhYWY3ODgxODRkNTViYWE4M2YwY2FkOWRmZDRjIiwidXNlcl9pZCI6IjIifQ.RSvOBnZL9Pi3CGjsXawJFmQ_4p1un3FgRz085rohrtQ
+
+### 15. Изменение статуса заказа (менеджер)
+PATCH {{baseUrl}}/api/admin/orders/1/status/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDMyMjI0LCJpYXQiOjE3ODM0MzA0MjQsImp0aSI6IjVlZWFhYWY3ODgxODRkNTViYWE4M2YwY2FkOWRmZDRjIiwidXNlcl9pZCI6IjIifQ.RSvOBnZL9Pi3CGjsXawJFmQ_4p1un3FgRz085rohrtQ
+
+{
+    "status_id": 2
+}
+
+
+### 16. Попытка изменить статус заказа обычным пользователем
+PATCH {{baseUrl}}/api/admin/orders/1/status/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDMxMDc3LCJpYXQiOjE3ODM0MjkyNzcsImp0aSI6Ijk2Y2E2ZGVjMzFhNzQyM2I5YjNjYmJlOTBlOWNhZDdjIiwidXNlcl9pZCI6IjMifQ.am1KfutlCkLUa_UenyyDS3urjlSJWIXjyvpU7TcGpsY
+
+{
+    "status_id": 2
+}
+
+### 17. Проверка изменения статуса пользователем после обновления
+GET {{baseUrl}}/api/orders/1/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDMxMDc3LCJpYXQiOjE3ODM0MjkyNzcsImp0aSI6Ijk2Y2E2ZGVjMzFhNzQyM2I5YjNjYmJlOTBlOWNhZDdjIiwidXNlcl9pZCI6IjMifQ.am1KfutlCkLUa_UenyyDS3urjlSJWIXjyvpU7TcGpsY

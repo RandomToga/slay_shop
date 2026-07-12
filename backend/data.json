@@ -1,0 +1,1495 @@
+[
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2026-07-08T16:42:48.106Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "1",
+        "object_repr": "Shiseido",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2026-07-08T16:43:32.049Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "2",
+        "object_repr": "La Roche-Posay",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2026-07-08T16:44:43.456Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "3",
+        "object_repr": "Dior",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2026-07-08T16:45:21.634Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "4",
+        "object_repr": "Estée Lauder",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2026-07-08T16:46:04.860Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "5",
+        "object_repr": "LUSH",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2026-07-08T16:47:38.833Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "1",
+        "object_repr": "Уход за лицом",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2026-07-08T16:47:56.355Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "2",
+        "object_repr": "Уход за телом",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2026-07-08T16:48:15.933Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "3",
+        "object_repr": "Декоративная косметика",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2026-07-08T16:48:40.398Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "4",
+        "object_repr": "Уход за волосами",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2026-07-08T16:48:59.571Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "5",
+        "object_repr": "Ароматы и парфюмерия",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2026-07-08T16:49:39.631Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "6",
+        "object_repr": "Солнцезащитная косметика",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2026-07-08T16:49:51.495Z",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "7",
+        "object_repr": "Аксессуары",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2026-07-08T16:54:02.231Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "1",
+        "object_repr": "Advanced Night Repair Synchronized Recovery Serum II",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2026-07-08T16:56:35.112Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "2",
+        "object_repr": "Effaclar Duo (+) Unifiant SPF 30",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2026-07-08T16:58:42.821Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "3",
+        "object_repr": "Wasabi Shampoo & Body Shower",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2026-07-08T17:02:20.796Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "4",
+        "object_repr": "Christian Dior J’Adore",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2026-07-08T17:06:28.579Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "5",
+        "object_repr": "Shiseido waso yuzu-c beauty sleeping mask",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2026-07-08T17:06:46.692Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "1",
+        "object_repr": "Менеджер",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2026-07-08T17:06:51.737Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "2",
+        "object_repr": "Пользователь",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2026-07-08T17:08:04.854Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "2",
+        "object_repr": "Кацуки Бакуго (bakugo@ya.ru)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2026-07-08T17:09:14.499Z",
+        "user": 1,
+        "content_type": 17,
+        "object_id": "1",
+        "object_repr": "Наличными",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2026-07-08T17:09:21.867Z",
+        "user": 1,
+        "content_type": 17,
+        "object_id": "2",
+        "object_repr": "Картой при получении",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2026-07-08T17:09:34.997Z",
+        "user": 1,
+        "content_type": 17,
+        "object_id": "1",
+        "object_repr": "Наличными при получении",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435 \\u0441\\u043f\\u043e\\u0441\\u043e\\u0431\\u0430 \\u043e\\u043f\\u043b\\u0430\\u0442\\u044b\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2026-07-08T17:10:40.993Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "1",
+        "object_repr": "Новый",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2026-07-08T17:10:59.508Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "2",
+        "object_repr": "В обработке",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2026-07-08T17:11:25.502Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "3",
+        "object_repr": "Сборка",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2026-07-08T17:11:45.460Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "4",
+        "object_repr": "Готов к отгрузке",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2026-07-08T17:12:10.181Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "5",
+        "object_repr": "Передан в доставку",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2026-07-08T17:12:26.539Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "6",
+        "object_repr": "Доставлен",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2026-07-08T17:12:50.513Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "7",
+        "object_repr": "Завершен",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2026-07-08T17:13:05.531Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "1",
+        "object_repr": "Новый",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435 \\u0441\\u0442\\u0430\\u0442\\u0443\\u0441\\u0430\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2026-07-08T17:24:44.536Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "4",
+        "object_repr": "Estee Lauder",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435 \\u0431\\u0440\\u0435\\u043d\\u0434\\u0430\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2026-07-08T17:26:38.558Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "1",
+        "object_repr": "Advanced Night Repair Synchronized Recovery Serum II",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2026-07-08T17:26:44.429Z",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "4",
+        "object_repr": "Christian Dior J’Adore",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 1,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 1,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 1,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": 1,
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 3,
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 3,
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 3,
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can view permission",
+        "content_type": 3,
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 2,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 2,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 2,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can view group",
+        "content_type": 2,
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 4,
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 4,
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 4,
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can view content type",
+        "content_type": 4,
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 5,
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 5,
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 5,
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can view session",
+        "content_type": 5,
+        "codename": "view_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can add Роль пользователя",
+        "content_type": 7,
+        "codename": "add_roleofuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can change Роль пользователя",
+        "content_type": 7,
+        "codename": "change_roleofuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can delete Роль пользователя",
+        "content_type": 7,
+        "codename": "delete_roleofuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can view Роль пользователя",
+        "content_type": 7,
+        "codename": "view_roleofuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add Пользователь",
+        "content_type": 8,
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change Пользователь",
+        "content_type": 8,
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete Пользователь",
+        "content_type": 8,
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can view Пользователь",
+        "content_type": 8,
+        "codename": "view_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can add Адрес доставки",
+        "content_type": 6,
+        "codename": "add_deliveryaddress"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can change Адрес доставки",
+        "content_type": 6,
+        "codename": "change_deliveryaddress"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can delete Адрес доставки",
+        "content_type": 6,
+        "codename": "delete_deliveryaddress"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can view Адрес доставки",
+        "content_type": 6,
+        "codename": "view_deliveryaddress"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+        "name": "Can add Бренд",
+        "content_type": 9,
+        "codename": "add_brand"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+        "name": "Can change Бренд",
+        "content_type": 9,
+        "codename": "change_brand"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+        "name": "Can delete Бренд",
+        "content_type": 9,
+        "codename": "delete_brand"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+        "name": "Can view Бренд",
+        "content_type": 9,
+        "codename": "view_brand"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+        "name": "Can add Категория товара",
+        "content_type": 11,
+        "codename": "add_productcategory"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+        "name": "Can change Категория товара",
+        "content_type": 11,
+        "codename": "change_productcategory"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+        "name": "Can delete Категория товара",
+        "content_type": 11,
+        "codename": "delete_productcategory"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+        "name": "Can view Категория товара",
+        "content_type": 11,
+        "codename": "view_productcategory"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+        "name": "Can add Товар",
+        "content_type": 10,
+        "codename": "add_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+        "name": "Can change Товар",
+        "content_type": 10,
+        "codename": "change_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+        "name": "Can delete Товар",
+        "content_type": 10,
+        "codename": "delete_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+        "name": "Can view Товар",
+        "content_type": 10,
+        "codename": "view_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+        "name": "Can add Корзина",
+        "content_type": 12,
+        "codename": "add_cart"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+        "name": "Can change Корзина",
+        "content_type": 12,
+        "codename": "change_cart"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+        "name": "Can delete Корзина",
+        "content_type": 12,
+        "codename": "delete_cart"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+        "name": "Can view Корзина",
+        "content_type": 12,
+        "codename": "view_cart"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 49,
+    "fields": {
+        "name": "Can add Позиция корзины",
+        "content_type": 13,
+        "codename": "add_cartitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 50,
+    "fields": {
+        "name": "Can change Позиция корзины",
+        "content_type": 13,
+        "codename": "change_cartitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+        "name": "Can delete Позиция корзины",
+        "content_type": 13,
+        "codename": "delete_cartitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 52,
+    "fields": {
+        "name": "Can view Позиция корзины",
+        "content_type": 13,
+        "codename": "view_cartitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 53,
+    "fields": {
+        "name": "Can add Заказ",
+        "content_type": 14,
+        "codename": "add_order"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 54,
+    "fields": {
+        "name": "Can change Заказ",
+        "content_type": 14,
+        "codename": "change_order"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 55,
+    "fields": {
+        "name": "Can delete Заказ",
+        "content_type": 14,
+        "codename": "delete_order"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 56,
+    "fields": {
+        "name": "Can view Заказ",
+        "content_type": 14,
+        "codename": "view_order"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 57,
+    "fields": {
+        "name": "Can add Позиция заказа",
+        "content_type": 15,
+        "codename": "add_orderitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 58,
+    "fields": {
+        "name": "Can change Позиция заказа",
+        "content_type": 15,
+        "codename": "change_orderitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 59,
+    "fields": {
+        "name": "Can delete Позиция заказа",
+        "content_type": 15,
+        "codename": "delete_orderitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 60,
+    "fields": {
+        "name": "Can view Позиция заказа",
+        "content_type": 15,
+        "codename": "view_orderitem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 61,
+    "fields": {
+        "name": "Can add Статус заказа",
+        "content_type": 16,
+        "codename": "add_orderstatus"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 62,
+    "fields": {
+        "name": "Can change Статус заказа",
+        "content_type": 16,
+        "codename": "change_orderstatus"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 63,
+    "fields": {
+        "name": "Can delete Статус заказа",
+        "content_type": 16,
+        "codename": "delete_orderstatus"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 64,
+    "fields": {
+        "name": "Can view Статус заказа",
+        "content_type": 16,
+        "codename": "view_orderstatus"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 65,
+    "fields": {
+        "name": "Can add Способ оплаты",
+        "content_type": 17,
+        "codename": "add_paymentmethod"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 66,
+    "fields": {
+        "name": "Can change Способ оплаты",
+        "content_type": 17,
+        "codename": "change_paymentmethod"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 67,
+    "fields": {
+        "name": "Can delete Способ оплаты",
+        "content_type": 17,
+        "codename": "delete_paymentmethod"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 68,
+    "fields": {
+        "name": "Can view Способ оплаты",
+        "content_type": 17,
+        "codename": "view_paymentmethod"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "users",
+        "model": "deliveryaddress"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "users",
+        "model": "roleofuser"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "users",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+        "app_label": "catalog",
+        "model": "brand"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+        "app_label": "catalog",
+        "model": "product"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+        "app_label": "catalog",
+        "model": "productcategory"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+        "app_label": "cart",
+        "model": "cart"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+        "app_label": "cart",
+        "model": "cartitem"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 14,
+    "fields": {
+        "app_label": "orders",
+        "model": "order"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 15,
+    "fields": {
+        "app_label": "orders",
+        "model": "orderitem"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 16,
+    "fields": {
+        "app_label": "orders",
+        "model": "orderstatus"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 17,
+    "fields": {
+        "app_label": "orders",
+        "model": "paymentmethod"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "dmkopd8emnfcof5ghf5heyqhp0dy9333",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hAoMBSX7j0DmRlAqoYmpV0Z765NutDtf-_9l4i4rTVuPS9xSuIstDj9boT8yG0H6Y7tNkue27pMJHdFHrTL65zy83K4fwcVe_3WyD7gSMZkMC4xoUGVrPLa4aDIB62NLZwZ2OnkGAqNtgRbDIDXA4B4fwDwwTfK:1whVIa:-L50mLgn40BQl0GWVv5xxA6Rvgso6e6LHxaea8dEAVk",
+        "expire_date": "2026-07-22T16:39:00.944Z"
+    }
+},
+{
+    "model": "users.roleofuser",
+    "pk": 1,
+    "fields": {
+        "role_name": "Менеджер"
+    }
+},
+{
+    "model": "users.roleofuser",
+    "pk": 2,
+    "fields": {
+        "role_name": "Пользователь"
+    }
+},
+{
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$GnUS4VOcqjJw1esIhlYAIh$40uxu04QoJ9eSs2WJxvJriOdL+03RUpTVHrRx/pdGRE=",
+        "last_login": "2026-07-08T16:39:00.933Z",
+        "is_superuser": true,
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-07-08T16:37:08.331Z",
+        "first_name": "Мария",
+        "last_name": "ААА",
+        "email": "maria@ya.ru",
+        "phone": "+77777777777",
+        "registration_date": "2026-07-08T16:37:08.813Z",
+        "role": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$tfPdAc2OVtcxGbGLkIpTGL$YEJEPibtosGrR59kb/2Z05zhxz7N44qmn+v70ul61cU=",
+        "last_login": null,
+        "is_superuser": false,
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-07-08T17:06:57Z",
+        "first_name": "Кацуки",
+        "last_name": "Бакуго",
+        "email": "bakugo@ya.ru",
+        "phone": "+77777777778",
+        "registration_date": "2026-07-08T17:08:04.847Z",
+        "role": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "catalog.productcategory",
+    "pk": 1,
+    "fields": {
+        "category_name": "Уход за лицом",
+        "category_description": "Сыворотки, кремы, тоники и патчи для любого типа кожи."
+    }
+},
+{
+    "model": "catalog.productcategory",
+    "pk": 2,
+    "fields": {
+        "category_name": "Уход за телом",
+        "category_description": "Питательные масла, скрабы, молочко и лосьоны для бархатистой и упругой кожи."
+    }
+},
+{
+    "model": "catalog.productcategory",
+    "pk": 3,
+    "fields": {
+        "category_name": "Декоративная косметика",
+        "category_description": "Тональные основы, палетки для век, помады и тушь — всё для создания макияжа от естественного «нюд» до вечернего гламура."
+    }
+},
+{
+    "model": "catalog.productcategory",
+    "pk": 4,
+    "fields": {
+        "category_name": "Уход за волосами",
+        "category_description": "Шампуни, маски, кондиционеры и несмываемые средства для восстановления даже самых поврежденных прядей."
+    }
+},
+{
+    "model": "catalog.productcategory",
+    "pk": 5,
+    "fields": {
+        "category_name": "Ароматы и парфюмерия",
+        "category_description": "Цветочные, древесные, восточные и свежие композиции."
+    }
+},
+{
+    "model": "catalog.productcategory",
+    "pk": 6,
+    "fields": {
+        "category_name": "Солнцезащитная косметика",
+        "category_description": "Высокоэффективные SPF-кремы и флюиды, которые оберегают от UVA/UVB-излучения, предотвращая пигментацию и фотостарение."
+    }
+},
+{
+    "model": "catalog.productcategory",
+    "pk": 7,
+    "fields": {
+        "category_name": "Аксессуары",
+        "category_description": "Кисти, спонжи, щипцы для завивки, массажные роллеры и губки для умывания."
+    }
+},
+{
+    "model": "catalog.brand",
+    "pk": 1,
+    "fields": {
+        "brand_name": "Shiseido",
+        "brand_country": "Япония",
+        "brand_description": "За вековой историей Shiseido стоит японский минимализм и глубочайшее уважение к природе кожи. Мы не боремся с несовершенствами — мы учим кожу самообновляться. Наши формулы вдохновлены традициями чайной церемонии и подкреплены технологией искусственного интеллекта. Это косметика, которая адаптируется к вашему индивидуальному ритму жизни, даря утреннюю свежесть, которая длится 24 часа."
+    }
+},
+{
+    "model": "catalog.brand",
+    "pk": 2,
+    "fields": {
+        "brand_name": "La Roche-Posay",
+        "brand_country": "Франция",
+        "brand_description": "Это голос разума в мире бьюти-индустрии. Созданный при участии ведущих дерматологов, бренд использует целебную воду из термального источника, признанную самой чистой в Европе. Мы говорим «нет» агрессивным компонентам и «да» клинически доказанной эффективности. La Roche-Posay — это идеальный выбор для чувствительной кожи, которая устала от экспериментов. Это гарантия того, что ваша кожа будет не только красивой, но и по-настоящему здоровой, без покраснений и стянутости."
+    }
+},
+{
+    "model": "catalog.brand",
+    "pk": 3,
+    "fields": {
+        "brand_name": "Dior",
+        "brand_country": "Франция",
+        "brand_description": "Dior — это не просто косметика, это высокая мода, воплощенная в текстурах и ароматах. Рожденный в сердце Парижа, бренд уже более 70 лет задает стандарты красоты, превращая ежедневный ритуал в мгновение истинного наслаждения. Используя экстракты редких цветов из собственного сада в Грасе, Dior дарит вашей коже сияние, достойное подиума."
+    }
+},
+{
+    "model": "catalog.brand",
+    "pk": 4,
+    "fields": {
+        "brand_name": "Estee Lauder",
+        "brand_country": "США",
+        "brand_description": "Estée Lauder — это симбиоз передовых биотехнологий и безошибочного вкуса. Мы верим, что возраст — это всего лишь цифра, поэтому создаем формулы, которые запускают регенерацию кожи на клеточном уровне. Это косметика для женщин, которые живут на полной скорости, но выглядят так, будто время над ними не властно. Сияй ярче с Estée Lauder."
+    }
+},
+{
+    "model": "catalog.brand",
+    "pk": 5,
+    "fields": {
+        "brand_name": "LUSH",
+        "brand_country": "Великобритания",
+        "brand_description": "LUSH — это яркий, шумный и безумно ароматный протест против скучной косметики. Мы создаем продукцию вручную из свежайших фруктов, овощей и эфирных масел, совсем как на кухне. Никакой жестокости, никаких пластиковых упаковок там, где это возможно, только честность и взрыв эмоций. Наши бомбочки для ванны превратят ритуал купания в красочное шоу, а маски для лица — в настоящее спа-наслаждение."
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+        "product_name": "Advanced Night Repair Synchronized Recovery Serum II",
+        "product_description": "Легендарная «ночная ремонтная» сыворотка, которая запускает процессы восстановления кожи во время сна. Запатентованная технология Chronolux Power Signal помогает нейтрализовать последствия стресса, загрязнения и недосыпа, делая кожу более гладкой и сияющей уже через 7 дней.",
+        "purpose": "Восстановление, интенсивное увлажнение, защита от стресса окружающей среды, выравнивание тона.",
+        "price": "8990.00",
+        "stock_quantity": 47,
+        "product_image": "https://ccdn.goldapple.ru/p/p/19760313176/web/696d67416464338ddc45b268dcf5b.jpg",
+        "brand": 4,
+        "product_category": 1
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+        "product_name": "Effaclar Duo (+) Unifiant SPF 30",
+        "product_description": "Корректирующий уход для проблемной и жирной кожи с легким тонирующим эффектом. Создан на основе термальной воды La Roche-Posay, содержит ниацинамид и прокерад, которые сужают поры, уменьшают воспаления и матируют кожу, скрывая несовершенства, но не забивая поры.",
+        "purpose": "Матирование, борьба с акне и постакне, легкая тональная коррекция, увлажнение.",
+        "price": "2150.00",
+        "stock_quantity": 31,
+        "product_image": "https://pcdn.goldapple.ru/p/p/19000005028/web/696d674d61696e5f34386261656564646163323634656238623331636266373366396336643236668deb0f28f425a0b.jpg",
+        "brand": 2,
+        "product_category": 1
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+        "product_name": "Wasabi Shampoo & Body Shower",
+        "product_description": "Заряжающий энергией 2-в-1 шампунь для волос и гель для душа с экстрактом васаби и мяты. Бодрит, стимулирует кровообращение кожи головы, придает объем тонким волосам и дарит невероятное ощущение свежести после душа. Идеальный спутник для утреннего пробуждения.",
+        "purpose": "Очищение кожи головы и тела, придание объема волосам, тонизирующий эффект.",
+        "price": "1890.00",
+        "stock_quantity": 56,
+        "product_image": "https://img-edg.joomcdn.net/9f11068776a4fa2a0a94da76996fa28e2bdd0bad_original.jpeg",
+        "brand": 5,
+        "product_category": 4
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+        "product_name": "Christian Dior J’Adore",
+        "product_description": "Женский парфюм J'adore от Christian Dior Parfum - это современная гламурная композиция, которая приобрела невероятную популярность и вышла в большом количестве вариантов. Ее роскошный и золотой аромат освещает кожу, словно лучи восходящего солнца. Классический характер духов отражен и во флаконе, выполненном в виде греческой амфоры. Композиция J'adore от Christian Dior Parfum выдержана в стиле дома Dior – сладкая, но не приторная, слегка острая цветочная симфония с нотами свежих сочных мандаринов в начале, аккордами жасмина, сливы, орхидеи и розы в сердце и пассажем амаранта, мускуса и ежевики в основе парфюмерной композиции.",
+        "purpose": "Парфюм",
+        "price": "5350.00",
+        "stock_quantity": 14,
+        "product_image": "https://avatars.mds.yandex.net/get-mpic/17783564/2a0000019db0745ca5b5c0a0c314041c3fe9/orig",
+        "brand": 3,
+        "product_category": 5
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+        "product_name": "Shiseido waso yuzu-c beauty sleeping mask",
+        "product_description": "Усиленная экстрактом цитруса юдзу формула ночной маски с высоким содержанием витамина C интенсивно восполняет запас влаги в коже и дарит ей ощущение свежести и глубокое увлажнение в течение 8 часов.\r\nДействуя как интенсивное увлажняющее обертывание, маска перезаряжает кожу ночью, пробуждая естественное сияние, и утром она будет выглядеть наполненной и свежей.\r\n\r\nЭкстракт японского лайма шикуваса представляет собой основу увлажняющей формулы, которая поддерживает достаточный уровень влаги в коже и предотвращает появление проблем в будущем.\r\nГидро-балансирующий комплекс помогает укрепить защитный барьер кожи и обеспечить ее длительное увлажнение в течение 8 часов, не допуская обезвоживания.\r\nБыстро впитывающаяся, легкая текстура геля дарит освежающий заряд увлажнения и не оставляет следов на подушке во время сна.\r\n\r\nУтром кожа выглядит упругой и отдохнувшей, даже если вы не выспались.",
+        "purpose": "Ночная восстанавливающая маска. осветление, восстановление, выравнивание тона",
+        "price": "3272.00",
+        "stock_quantity": 67,
+        "product_image": "https://ccdn.goldapple.ru/p/p/19000011284/web/696d674d61696e5064708ddc48b7b857e32fullhd.webp",
+        "brand": 1,
+        "product_category": 1
+    }
+},
+{
+    "model": "orders.paymentmethod",
+    "pk": 1,
+    "fields": {
+        "payment_method_name": "Наличными при получении"
+    }
+},
+{
+    "model": "orders.paymentmethod",
+    "pk": 2,
+    "fields": {
+        "payment_method_name": "Картой при получении"
+    }
+},
+{
+    "model": "orders.orderstatus",
+    "pk": 1,
+    "fields": {
+        "status_name": "Новый",
+        "status_description": "Мы получили ваш заказ и начали обработку"
+    }
+},
+{
+    "model": "orders.orderstatus",
+    "pk": 2,
+    "fields": {
+        "status_name": "В обработке",
+        "status_description": "Ваш заказ подтвержден, комплектуем товары"
+    }
+},
+{
+    "model": "orders.orderstatus",
+    "pk": 3,
+    "fields": {
+        "status_name": "Сборка",
+        "status_description": "Ваш заказ собирает кладовщик"
+    }
+},
+{
+    "model": "orders.orderstatus",
+    "pk": 4,
+    "fields": {
+        "status_name": "Готов к отгрузке",
+        "status_description": "Заказ собран и ждет отправки"
+    }
+},
+{
+    "model": "orders.orderstatus",
+    "pk": 5,
+    "fields": {
+        "status_name": "Передан в доставку",
+        "status_description": "Заказ передан курьерской службе"
+    }
+},
+{
+    "model": "orders.orderstatus",
+    "pk": 6,
+    "fields": {
+        "status_name": "Доставлен",
+        "status_description": "Заказ вручен получателю"
+    }
+},
+{
+    "model": "orders.orderstatus",
+    "pk": 7,
+    "fields": {
+        "status_name": "Завершен",
+        "status_description": "Спасибо за покупку! Ждем вас снова"
+    }
+}
+]

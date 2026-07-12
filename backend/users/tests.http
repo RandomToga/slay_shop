@@ -1,0 +1,84 @@
+# 1. Регистрация нового пользователя
+POST http://127.0.0.1:8000/api/users/register/
+Content-Type: application/json
+
+{
+    "first_name": "Анастасия",
+    "last_name": "Тодороки",
+    "email": "anastas@gmail.com",
+    "password": "securepass123"
+}
+
+###
+
+# 2. Логин пользователя
+POST http://127.0.0.1:8000/api/users/login/
+Content-Type: application/json
+
+{
+    "email": "anastas@gmail.com",
+    "password": "securepass123"
+}
+
+###
+
+# 3. Получить свой профиль
+GET http://127.0.0.1:8000/api/users/me/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzMzY2MTczLCJpYXQiOjE3ODMzNjQzNzMsImp0aSI6IjIxODU1YWNjNGFkNjQ2YjQ4NTQ0NWQyN2M3MzUyYmQ3IiwidXNlcl9pZCI6IjMifQ.spvL3me76H632_1L8q_ZeX3GvKxEzldXwoqfz1mnpaA
+###
+
+# 4. Обновить данные профиля
+PATCH http://127.0.0.1:8000/api/users/me/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzMzY2MTczLCJpYXQiOjE3ODMzNjQzNzMsImp0aSI6IjIxODU1YWNjNGFkNjQ2YjQ4NTQ0NWQyN2M3MzUyYmQ3IiwidXNlcl9pZCI6IjMifQ.spvL3me76H632_1L8q_ZeX3GvKxEzldXwoqfz1mnpaA
+Content-Type: application/json
+
+{
+    "phone": "+799912345670"
+}
+
+###
+
+# 5. Добавить адрес доставки
+POST http://127.0.0.1:8000/api/users/addresses/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDMwNTQ2LCJpYXQiOjE3ODM0Mjg3NDYsImp0aSI6IjVmZDdjN2Y3NGY4NjQyZjRhNzYyZThkZGI2ODFkYmJlIiwidXNlcl9pZCI6IjMifQ.A_Yfe5InrxsC8ry0oBVOy2ciysJ3TW0Lc3sGGqvpOkY
+Content-Type: application/json
+
+{
+    "city": "Москва",
+    "street": "Нагатинская",
+    "house": "10",
+    "apartment": "25"
+}
+
+###
+
+# 6. Получить список адресов
+GET http://127.0.0.1:8000/api/users/addresses/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDMwNTQ2LCJpYXQiOjE3ODM0Mjg3NDYsImp0aSI6IjVmZDdjN2Y3NGY4NjQyZjRhNzYyZThkZGI2ODFkYmJlIiwidXNlcl9pZCI6IjMifQ.A_Yfe5InrxsC8ry0oBVOy2ciysJ3TW0Lc3sGGqvpOkY
+
+###
+
+# 7. Удалить адрес
+DELETE http://127.0.0.1:8000/api/users/addresses/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzMzQyODU1LCJpYXQiOjE3ODMzNDEwNTUsImp0aSI6IjczNDc4MzdjZWVkMTQ0YzBiMzYwMDkyMmE1NGI2NDY3IiwidXNlcl9pZCI6IjMifQ.mdaR4v2YdjrvTVJno2_L7CnlRYnCHSWvMsuv4xF8jfk
+
+###
+# 8. Дубликаты
+POST http://127.0.0.1:8000/api/users/register/
+Content-Type: application/json
+
+{
+    "first_name": "Петр",
+    "last_name": "Сидоров",
+    "email": "anastas@gmail.com",
+    "password": "securepass123"
+}
+
+### 9. Логин менеджера
+POST http://127.0.0.1:8000/api/users/login/
+Content-Type: application/json
+
+{
+    "email": "bakugo@ya.ru",
+    "password": "loxlelik1"
+}

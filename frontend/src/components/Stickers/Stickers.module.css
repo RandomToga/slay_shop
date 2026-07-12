@@ -1,0 +1,67 @@
+/* Контейнер на весь экран */
+.stickersContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* Каждая блестка */
+.sparkle {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: inherit;
+  font-weight: bold;
+  opacity: 0;
+  
+  /* УСИЛЕННОЕ СВЕЧЕНИЕ: 4 слоя с цветным гало */
+  text-shadow: 
+    0 0 15px currentColor, 
+    0 0 35px currentColor, 
+    0 0 70px currentColor,
+    0 0 100px currentColor;
+
+  /* Анимация мерцания + парения */
+  animation: 
+    brightGlow 3s ease-in-out infinite alternate,
+    floatAround 8s ease-in-out infinite alternate;
+}
+
+/* Яркое, контрастное мерцание с пульсацией (эффект резкого включения/выключения) */
+@keyframes brightGlow {
+  0% { 
+    opacity: 0.1; 
+    transform: scale(0.6) rotate(0deg); 
+    filter: brightness(1) drop-shadow(0 0 10px currentColor);
+  }
+  35% { 
+    opacity: 1; 
+    transform: scale(1.2) rotate(180deg); 
+    filter: brightness(2.5) drop-shadow(0 0 40px currentColor);
+  }
+  70% { 
+    opacity: 0.8; 
+    transform: scale(1.1) rotate(360deg); 
+    filter: brightness(1.5) drop-shadow(0 0 20px currentColor);
+  }
+  100% { 
+    opacity: 0.3; 
+    transform: scale(0.8) rotate(540deg); 
+    filter: brightness(1);
+  }
+}
+
+/* Медленное парение (чтобы не было статично) */
+@keyframes floatAround {
+  0% { transform: translate(0px, 0px); }
+  25% { transform: translate(15px, -20px); }
+  50% { transform: translate(-10px, -30px); }
+  75% { transform: translate(20px, -10px); }
+  100% { transform: translate(-5px, 15px); }
+}

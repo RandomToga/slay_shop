@@ -1,0 +1,142 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 240, 245, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #ffffff;
+  border: 3px solid #e3b3c4;
+  border-radius: 24px;
+  padding: 50px;
+  width: 70%;
+  height: 80%;
+  position: relative;
+  overflow-y: auto;
+  animation: popIn 0.3s ease-out;
+
+  /* ГЛАВНОЕ: Включаем Flexbox, чтобы выровнять всё по центру */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрирует всё по горизонтали */
+  justify-content: center; /* Центрирует всё по вертикали внутри карточки */
+  text-align: center;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: #a2567a;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.closeButton:hover { transform: rotate(90deg); }
+
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.imageContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent; /* Убрали серый фон */
+  border-radius: 20px;
+  /* min-height: 200px; <--- Убрали жесткую высоту, она подстроится под картинку */
+  overflow: hidden; /* Чтобы углы картинки не вылезали за скругление */
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center; 
+}
+
+.details {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 22px;
+  color: #333;
+  margin: 7% 0 10px 0;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #6e4559;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  background: #fafafa;
+  padding: 15px;
+  border-radius: 12px;
+  border-left: 4px solid #f8b0c9;
+}
+
+.metaInfo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.cartButton {
+  background: #EA9CAF;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-size: 16px;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.cartButton:hover { background: #e88fb0; }
+.cartButton:disabled { background: #e0e0e0; cursor: not-allowed; }
+
+.message {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: 600;
+  color: #a2567a;
+}
+
+/* Адаптив для маленьких экранов */
+@media (max-width: 600px) {
+  .content { flex-direction: column; }
+  .imageContainer { min-height: 150px; }
+}

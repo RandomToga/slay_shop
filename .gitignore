@@ -1,0 +1,16 @@
+# База данных SQLite
+backend/*.sqlite3
+
+# Виртуальное окружение
+backend/venv/
+backend/.venv/
+
+# Кэш Python
+**/__pycache__/
+*.pyc
+
+# Секреты
+backend/.env
+
+# Папки редакторов
+.vscode/

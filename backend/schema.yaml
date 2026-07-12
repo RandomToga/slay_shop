@@ -1,0 +1,1898 @@
+openapi: 3.0.3
+info:
+  title: ''
+  version: 0.0.0
+paths:
+  /api/admin/brands/:
+    get:
+      operationId: admin_brands_list
+      description: Управление брендами (только для менеджеров)
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedBrandList'
+          description: ''
+    post:
+      operationId: admin_brands_create
+      description: Управление брендами (только для менеджеров)
+      tags:
+      - admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Brand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Brand'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Brand'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brand'
+          description: ''
+  /api/admin/brands/{brand_id}/:
+    get:
+      operationId: admin_brands_retrieve
+      description: Управление брендами (только для менеджеров)
+      parameters:
+      - in: path
+        name: brand_id
+        schema:
+          type: integer
+          title: ID бренда
+        description: A unique integer value identifying this Бренд.
+        required: true
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brand'
+          description: ''
+    put:
+      operationId: admin_brands_update
+      description: Управление брендами (только для менеджеров)
+      parameters:
+      - in: path
+        name: brand_id
+        schema:
+          type: integer
+          title: ID бренда
+        description: A unique integer value identifying this Бренд.
+        required: true
+      tags:
+      - admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Brand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Brand'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Brand'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brand'
+          description: ''
+    patch:
+      operationId: admin_brands_partial_update
+      description: Управление брендами (только для менеджеров)
+      parameters:
+      - in: path
+        name: brand_id
+        schema:
+          type: integer
+          title: ID бренда
+        description: A unique integer value identifying this Бренд.
+        required: true
+      tags:
+      - admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBrand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBrand'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBrand'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brand'
+          description: ''
+    delete:
+      operationId: admin_brands_destroy
+      description: Управление брендами (только для менеджеров)
+      parameters:
+      - in: path
+        name: brand_id
+        schema:
+          type: integer
+          title: ID бренда
+        description: A unique integer value identifying this Бренд.
+        required: true
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/admin/categories/:
+    get:
+      operationId: admin_categories_list
+      description: Управление категориями (только для менеджеров)
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCategoryList'
+          description: ''
+    post:
+      operationId: admin_categories_create
+      description: Управление категориями (только для менеджеров)
+      tags:
+      - admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Category'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Category'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+  /api/admin/categories/{category_id}/:
+    get:
+      operationId: admin_categories_retrieve
+      description: Управление категориями (только для менеджеров)
+      parameters:
+      - in: path
+        name: category_id
+        schema:
+          type: integer
+          title: ID категории
+        description: A unique integer value identifying this Категория товара.
+        required: true
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+    put:
+      operationId: admin_categories_update
+      description: Управление категориями (только для менеджеров)
+      parameters:
+      - in: path
+        name: category_id
+        schema:
+          type: integer
+          title: ID категории
+        description: A unique integer value identifying this Категория товара.
+        required: true
+      tags:
+      - admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Category'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Category'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+    patch:
+      operationId: admin_categories_partial_update
+      description: Управление категориями (только для менеджеров)
+      parameters:
+      - in: path
+        name: category_id
+        schema:
+          type: integer
+          title: ID категории
+        description: A unique integer value identifying this Категория товара.
+        required: true
+      tags:
+      - admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCategory'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCategory'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCategory'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+    delete:
+      operationId: admin_categories_destroy
+      description: Управление категориями (только для менеджеров)
+      parameters:
+      - in: path
+        name: category_id
+        schema:
+          type: integer
+          title: ID категории
+        description: A unique integer value identifying this Категория товара.
+        required: true
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/admin/orders/:
+    get:
+      operationId: admin_orders_list
+      description: GET /api/admin/orders/ — список всех заказов с фильтром по статусу.
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedOrderList'
+          description: ''
+  /api/admin/orders/{id}/:
+    get:
+      operationId: admin_orders_retrieve
+      description: GET /api/admin/orders/{id}/ — детали любого заказа.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/admin/orders/{id}/status/:
+    put:
+      operationId: admin_orders_status_update
+      description: PATCH /api/admin/orders/{id}/status/ — изменить статус заказа.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderStatusUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OrderStatusUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OrderStatusUpdate'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderStatusUpdate'
+          description: ''
+    patch:
+      operationId: admin_orders_status_partial_update
+      description: PATCH /api/admin/orders/{id}/status/ — изменить статус заказа.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOrderStatusUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedOrderStatusUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOrderStatusUpdate'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderStatusUpdate'
+          description: ''
+  /api/admin/products/:
+    get:
+      operationId: admin_products_list
+      description: Управление товарами (только для менеджеров)
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedProductList'
+          description: ''
+    post:
+      operationId: admin_products_create
+      description: Управление товарами (только для менеджеров)
+      tags:
+      - admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Product'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Product'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: ''
+  /api/admin/products/{product_id}/:
+    get:
+      operationId: admin_products_retrieve
+      description: Управление товарами (только для менеджеров)
+      parameters:
+      - in: path
+        name: product_id
+        schema:
+          type: integer
+          title: ID товара
+        description: A unique integer value identifying this Товар.
+        required: true
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: ''
+    put:
+      operationId: admin_products_update
+      description: Управление товарами (только для менеджеров)
+      parameters:
+      - in: path
+        name: product_id
+        schema:
+          type: integer
+          title: ID товара
+        description: A unique integer value identifying this Товар.
+        required: true
+      tags:
+      - admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Product'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Product'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: ''
+    patch:
+      operationId: admin_products_partial_update
+      description: Управление товарами (только для менеджеров)
+      parameters:
+      - in: path
+        name: product_id
+        schema:
+          type: integer
+          title: ID товара
+        description: A unique integer value identifying this Товар.
+        required: true
+      tags:
+      - admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProduct'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProduct'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProduct'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: ''
+    delete:
+      operationId: admin_products_destroy
+      description: Управление товарами (только для менеджеров)
+      parameters:
+      - in: path
+        name: product_id
+        schema:
+          type: integer
+          title: ID товара
+        description: A unique integer value identifying this Товар.
+        required: true
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/brands/:
+    get:
+      operationId: brands_list
+      description: Публичный просмотр брендов
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - brands
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedBrandList'
+          description: ''
+  /api/brands/{brand_id}/:
+    get:
+      operationId: brands_retrieve
+      description: Публичный просмотр брендов
+      parameters:
+      - in: path
+        name: brand_id
+        schema:
+          type: integer
+          title: ID бренда
+        description: A unique integer value identifying this Бренд.
+        required: true
+      tags:
+      - brands
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brand'
+          description: ''
+  /api/cart/:
+    get:
+      operationId: cart_retrieve
+      tags:
+      - cart
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/cart/clear/:
+    delete:
+      operationId: cart_clear_destroy
+      tags:
+      - cart
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/cart/items/:
+    post:
+      operationId: cart_items_create
+      tags:
+      - cart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartItem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CartItem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CartItem'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+          description: ''
+  /api/cart/items/{item_id}/:
+    patch:
+      operationId: cart_items_partial_update
+      parameters:
+      - in: path
+        name: item_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - cart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCartItem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCartItem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCartItem'
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+          description: ''
+    delete:
+      operationId: cart_items_destroy
+      parameters:
+      - in: path
+        name: item_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - cart
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/categories/:
+    get:
+      operationId: categories_list
+      description: Публичный просмотр категорий
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - categories
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCategoryList'
+          description: ''
+  /api/categories/{category_id}/:
+    get:
+      operationId: categories_retrieve
+      description: Публичный просмотр категорий
+      parameters:
+      - in: path
+        name: category_id
+        schema:
+          type: integer
+          title: ID категории
+        description: A unique integer value identifying this Категория товара.
+        required: true
+      tags:
+      - categories
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+  /api/order-statuses/:
+    get:
+      operationId: order_statuses_list
+      description: GET /api/order-statuses/ — список всех статусов заказа.
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - order-statuses
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedOrderStatusList'
+          description: ''
+  /api/orders/:
+    get:
+      operationId: orders_list
+      description: GET /api/orders/ — история заказов текущего пользователя.
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - orders
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedOrderList'
+          description: ''
+  /api/orders/{id}/:
+    get:
+      operationId: orders_retrieve
+      description: GET /api/orders/{id}/ — детали конкретного заказа пользователя.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - orders
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/orders/create/:
+    post:
+      operationId: orders_create_create
+      description: |-
+        POST /api/orders/ — оформить заказ.
+        Принимает address_id и payment_method_id.
+      tags:
+      - orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Order'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/payment-methods/:
+    get:
+      operationId: payment_methods_list
+      description: GET /api/payment-methods/ — список всех доступных способов оплаты.
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - payment-methods
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPaymentMethodList'
+          description: ''
+  /api/products/:
+    get:
+      operationId: products_list
+      description: Публичный просмотр товаров
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - products
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedProductList'
+          description: ''
+  /api/products/{product_id}/:
+    get:
+      operationId: products_retrieve
+      description: Публичный просмотр товаров
+      parameters:
+      - in: path
+        name: product_id
+        schema:
+          type: integer
+          title: ID товара
+        description: A unique integer value identifying this Товар.
+        required: true
+      tags:
+      - products
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: ''
+  /api/users/addresses/:
+    get:
+      operationId: users_addresses_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - users
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDeliveryAddressList'
+          description: ''
+    post:
+      operationId: users_addresses_create
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeliveryAddress'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DeliveryAddress'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DeliveryAddress'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryAddress'
+          description: ''
+  /api/users/addresses/{id}/:
+    get:
+      operationId: users_addresses_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - users
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryAddress'
+          description: ''
+    put:
+      operationId: users_addresses_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeliveryAddress'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DeliveryAddress'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DeliveryAddress'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryAddress'
+          description: ''
+    patch:
+      operationId: users_addresses_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDeliveryAddress'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDeliveryAddress'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDeliveryAddress'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryAddress'
+          description: ''
+    delete:
+      operationId: users_addresses_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - users
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/users/login/:
+    post:
+      operationId: users_login_create
+      description: |-
+        Универсальный вход для ВСЕХ пользователей.
+        Просто принимает email и пароль, возвращает токены.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Login'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Login'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+          description: ''
+  /api/users/me/:
+    get:
+      operationId: users_me_retrieve
+      description: Просмотр и редактирование своего профиля
+      tags:
+      - users
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: users_me_update
+      description: Просмотр и редактирование своего профиля
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: users_me_partial_update
+      description: Просмотр и редактирование своего профиля
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/users/register/:
+    post:
+      operationId: users_register_create
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Register'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Register'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Register'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Register'
+          description: ''
+components:
+  schemas:
+    Brand:
+      type: object
+      properties:
+        brand_id:
+          type: integer
+          readOnly: true
+          title: ID бренда
+        brand_name:
+          type: string
+          title: Название бренда
+          maxLength: 150
+        brand_country:
+          type: string
+          nullable: true
+          title: Страна бренда
+          maxLength: 100
+        brand_description:
+          type: string
+          nullable: true
+          title: Описание бренда
+      required:
+      - brand_id
+      - brand_name
+    CartItem:
+      type: object
+      properties:
+        cart_item_id:
+          type: integer
+          readOnly: true
+          title: ID позиции корзины
+        product_id:
+          type: integer
+          title: ID товара
+        product_name:
+          type: string
+          readOnly: true
+        product_quantity:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+          title: Количество товара
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+        total_price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+      required:
+      - cart_item_id
+      - price
+      - product_id
+      - product_name
+      - total_price
+    Category:
+      type: object
+      properties:
+        category_id:
+          type: integer
+          readOnly: true
+          title: ID категории
+        category_name:
+          type: string
+          title: Название категории
+          maxLength: 150
+        category_description:
+          type: string
+          nullable: true
+          title: Описание категории
+      required:
+      - category_id
+      - category_name
+    DeliveryAddress:
+      type: object
+      properties:
+        address_id:
+          type: integer
+          readOnly: true
+          title: ID адреса
+        city:
+          type: string
+          title: Город
+          maxLength: 100
+        street:
+          type: string
+          title: Улица
+          maxLength: 100
+        house:
+          type: string
+          title: Дом
+          maxLength: 20
+        apartment:
+          type: string
+          nullable: true
+          title: Квартира
+          maxLength: 20
+      required:
+      - address_id
+      - city
+      - house
+      - street
+    Login:
+      type: object
+      description: |-
+        Кастомный сериализатор для получения JWT токенов.
+        Автоматически использует email как USERNAME_FIELD.
+      properties:
+        email:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - email
+      - password
+    Order:
+      type: object
+      properties:
+        order_id:
+          type: integer
+          readOnly: true
+          title: ID заказа
+        user_id:
+          type: integer
+          readOnly: true
+        status:
+          allOf:
+          - $ref: '#/components/schemas/OrderStatus'
+          readOnly: true
+        payment_method:
+          allOf:
+          - $ref: '#/components/schemas/PaymentMethod'
+          readOnly: true
+        payment_method_id:
+          type: integer
+          title: ID способа оплаты
+          writeOnly: true
+        address_id:
+          type: integer
+          title: ID адреса
+          writeOnly: true
+        delivery_address:
+          allOf:
+          - $ref: '#/components/schemas/DeliveryAddress'
+          readOnly: true
+        total_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+          readOnly: true
+        order_date:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата заказа
+      required:
+      - address_id
+      - delivery_address
+      - items
+      - order_date
+      - order_id
+      - payment_method
+      - payment_method_id
+      - status
+      - total_amount
+      - user_id
+    OrderItem:
+      type: object
+      properties:
+        order_item_id:
+          type: integer
+          readOnly: true
+          title: ID позиции заказа
+        product_id:
+          type: integer
+          readOnly: true
+        product_name:
+          type: string
+          readOnly: true
+        product_quantity:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+          title: Количество товара
+        price_at_order:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+        subtotal:
+          type: string
+          readOnly: true
+      required:
+      - order_item_id
+      - price_at_order
+      - product_id
+      - product_name
+      - product_quantity
+      - subtotal
+    OrderStatus:
+      type: object
+      properties:
+        status_id:
+          type: integer
+          readOnly: true
+          title: ID статуса
+        status_name:
+          type: string
+          title: Название статуса
+          maxLength: 100
+        status_description:
+          type: string
+          nullable: true
+          title: Описание статуса
+      required:
+      - status_id
+      - status_name
+    OrderStatusUpdate:
+      type: object
+      description: Только для обновления статуса заказа менеджером.
+      properties:
+        status_id:
+          type: integer
+          title: ID статуса
+      required:
+      - status_id
+    PaginatedBrandList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Brand'
+    PaginatedCategoryList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+    PaginatedDeliveryAddressList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryAddress'
+    PaginatedOrderList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+    PaginatedOrderStatusList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderStatus'
+    PaginatedPaymentMethodList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentMethod'
+    PaginatedProductList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+    PatchedBrand:
+      type: object
+      properties:
+        brand_id:
+          type: integer
+          readOnly: true
+          title: ID бренда
+        brand_name:
+          type: string
+          title: Название бренда
+          maxLength: 150
+        brand_country:
+          type: string
+          nullable: true
+          title: Страна бренда
+          maxLength: 100
+        brand_description:
+          type: string
+          nullable: true
+          title: Описание бренда
+    PatchedCartItem:
+      type: object
+      properties:
+        cart_item_id:
+          type: integer
+          readOnly: true
+          title: ID позиции корзины
+        product_id:
+          type: integer
+          title: ID товара
+        product_name:
+          type: string
+          readOnly: true
+        product_quantity:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+          title: Количество товара
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+        total_price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+    PatchedCategory:
+      type: object
+      properties:
+        category_id:
+          type: integer
+          readOnly: true
+          title: ID категории
+        category_name:
+          type: string
+          title: Название категории
+          maxLength: 150
+        category_description:
+          type: string
+          nullable: true
+          title: Описание категории
+    PatchedDeliveryAddress:
+      type: object
+      properties:
+        address_id:
+          type: integer
+          readOnly: true
+          title: ID адреса
+        city:
+          type: string
+          title: Город
+          maxLength: 100
+        street:
+          type: string
+          title: Улица
+          maxLength: 100
+        house:
+          type: string
+          title: Дом
+          maxLength: 20
+        apartment:
+          type: string
+          nullable: true
+          title: Квартира
+          maxLength: 20
+    PatchedOrderStatusUpdate:
+      type: object
+      description: Только для обновления статуса заказа менеджером.
+      properties:
+        status_id:
+          type: integer
+          title: ID статуса
+    PatchedProduct:
+      type: object
+      properties:
+        product_id:
+          type: integer
+          readOnly: true
+          title: ID товара
+        product_name:
+          type: string
+          title: Название товара
+          maxLength: 200
+        product_description:
+          type: string
+          nullable: true
+          title: Описание товара
+        purpose:
+          type: string
+          nullable: true
+          title: Назначение
+          maxLength: 200
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          title: Цена
+        stock_quantity:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+          title: Количество на складе
+        product_image:
+          nullable: true
+          title: Изображение товара
+          oneOf:
+          - type: string
+            format: uri
+            maxLength: 500
+          - type: string
+            maxLength: 0
+        brand:
+          type: integer
+          title: Бренд
+        product_category:
+          type: integer
+          title: Категория товара
+    PatchedUser:
+      type: object
+      description: Для просмотра и редактирования профиля
+      properties:
+        user_id:
+          type: integer
+          readOnly: true
+          title: ID пользователя
+        first_name:
+          type: string
+          title: Имя
+          maxLength: 100
+        last_name:
+          type: string
+          title: Фамилия
+          maxLength: 100
+        email:
+          type: string
+          format: email
+          readOnly: true
+          title: Электронная почта
+        phone:
+          type: string
+          nullable: true
+          title: Телефон
+          maxLength: 20
+        role_name:
+          type: string
+          readOnly: true
+    PaymentMethod:
+      type: object
+      properties:
+        payment_method_id:
+          type: integer
+          readOnly: true
+          title: ID способа оплаты
+        payment_method_name:
+          type: string
+          title: Название способа оплаты
+          maxLength: 100
+      required:
+      - payment_method_id
+      - payment_method_name
+    Product:
+      type: object
+      properties:
+        product_id:
+          type: integer
+          readOnly: true
+          title: ID товара
+        product_name:
+          type: string
+          title: Название товара
+          maxLength: 200
+        product_description:
+          type: string
+          nullable: true
+          title: Описание товара
+        purpose:
+          type: string
+          nullable: true
+          title: Назначение
+          maxLength: 200
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          title: Цена
+        stock_quantity:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+          title: Количество на складе
+        product_image:
+          nullable: true
+          title: Изображение товара
+          oneOf:
+          - type: string
+            format: uri
+            maxLength: 500
+          - type: string
+            maxLength: 0
+        brand:
+          type: integer
+          title: Бренд
+        product_category:
+          type: integer
+          title: Категория товара
+      required:
+      - brand
+      - price
+      - product_category
+      - product_id
+      - product_name
+      - stock_quantity
+    Register:
+      type: object
+      properties:
+        first_name:
+          type: string
+          title: Имя
+          maxLength: 100
+        last_name:
+          type: string
+          title: Фамилия
+          maxLength: 100
+        email:
+          type: string
+          format: email
+          title: Электронная почта
+          maxLength: 254
+        password:
+          type: string
+          writeOnly: true
+          minLength: 6
+      required:
+      - email
+      - first_name
+      - last_name
+      - password
+    User:
+      type: object
+      description: Для просмотра и редактирования профиля
+      properties:
+        user_id:
+          type: integer
+          readOnly: true
+          title: ID пользователя
+        first_name:
+          type: string
+          title: Имя
+          maxLength: 100
+        last_name:
+          type: string
+          title: Фамилия
+          maxLength: 100
+        email:
+          type: string
+          format: email
+          readOnly: true
+          title: Электронная почта
+        phone:
+          type: string
+          nullable: true
+          title: Телефон
+          maxLength: 20
+        role_name:
+          type: string
+          readOnly: true
+      required:
+      - email
+      - first_name
+      - last_name
+      - role_name
+      - user_id
+  securitySchemes:
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

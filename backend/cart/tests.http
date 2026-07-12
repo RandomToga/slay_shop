@@ -1,0 +1,96 @@
+### Вход в систему
+POST http://127.0.0.1:8000/api/users/login/
+Content-Type: application/json
+
+{
+    "email": "anastas@gmail.com",
+    "password": "securepass123"
+}
+
+### 1. Получить пустую корзину гостя
+GET http://127.0.0.1:8000/api/cart/
+Content-Type: application/json
+
+### 2. Получить пустую корзину авторизованного пользователя
+GET http://127.0.0.1:8000/api/cart/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDMxMDc3LCJpYXQiOjE3ODM0MjkyNzcsImp0aSI6Ijk2Y2E2ZGVjMzFhNzQyM2I5YjNjYmJlOTBlOWNhZDdjIiwidXNlcl9pZCI6IjMifQ.am1KfutlCkLUa_UenyyDS3urjlSJWIXjyvpU7TcGpsY
+
+### 3. Гость: добавить товар в корзину
+POST http://127.0.0.1:8000/api/cart/items/
+Content-Type: application/json
+
+{
+    "product_id": 1,
+    "product_quantity": 2
+}
+
+### 4. Гость: добавить товар без указания количества (по умолчанию 1)
+POST http://127.0.0.1:8000/api/cart/items/
+Content-Type: application/json
+
+{
+    "product_id": 2
+}
+
+### 5. Авторизованный: добавить товар в корзину
+POST http://127.0.0.1:8000/api/cart/items/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDMxMDc3LCJpYXQiOjE3ODM0MjkyNzcsImp0aSI6Ijk2Y2E2ZGVjMzFhNzQyM2I5YjNjYmJlOTBlOWNhZDdjIiwidXNlcl9pZCI6IjMifQ.am1KfutlCkLUa_UenyyDS3urjlSJWIXjyvpU7TcGpsY
+Content-Type: application/json
+
+{
+    "product_id": 1,
+    "product_quantity": 2
+}
+
+### 6. Авторизованный: попытка добавить товар с quantity > stock_quantity
+POST http://127.0.0.1:8000/api/cart/items/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDI3ODI1LCJpYXQiOjE3ODM0MjYwMjUsImp0aSI6IjUxZmE5NDJjZWFmZDQxYmM4ZTI2Zjg2Njk5NzEwNGIxIiwidXNlcl9pZCI6IjMifQ.6464K00fx1dwmqqP09vUntEOlYtZJg9RZTcfMngxXMw
+Content-Type: application/json
+
+{
+    "product_id": 1,
+    "product_quantity": 999999
+}
+
+
+### 7. Гость: обновить количество товара
+PATCH http://127.0.0.1:8000/api/cart/items/1/
+Content-Type: application/json
+
+{
+    "product_quantity": 5
+}
+
+### 8. Авторизованный: обновить количество товара
+# Сначала получим cart_item_id из ответа корзины
+PATCH http://127.0.0.1:8000/api/cart/items/3/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDI3ODI1LCJpYXQiOjE3ODM0MjYwMjUsImp0aSI6IjUxZmE5NDJjZWFmZDQxYmM4ZTI2Zjg2Njk5NzEwNGIxIiwidXNlcl9pZCI6IjMifQ.6464K00fx1dwmqqP09vUntEOlYtZJg9RZTcfMngxXMw
+Content-Type: application/json
+
+{
+    "product_quantity": 10
+}
+
+
+### 9. Авторизованный: попытка установить quantity > stock_quantity
+PATCH http://127.0.0.1:8000/api/cart/items/3/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDI3ODI1LCJpYXQiOjE3ODM0MjYwMjUsImp0aSI6IjUxZmE5NDJjZWFmZDQxYmM4ZTI2Zjg2Njk5NzEwNGIxIiwidXNlcl9pZCI6IjMifQ.6464K00fx1dwmqqP09vUntEOlYtZJg9RZTcfMngxXMw
+Content-Type: application/json
+
+{
+    "product_quantity": 999999
+}
+
+### 10. Гость: удалить товар из корзины
+DELETE http://127.0.0.1:8000/api/cart/items/1/
+
+### 11. Авторизованный: удалить товар из корзины
+DELETE http://127.0.0.1:8000/api/cart/items/3/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDI3ODI1LCJpYXQiOjE3ODM0MjYwMjUsImp0aSI6IjUxZmE5NDJjZWFmZDQxYmM4ZTI2Zjg2Njk5NzEwNGIxIiwidXNlcl9pZCI6IjMifQ.6464K00fx1dwmqqP09vUntEOlYtZJg9RZTcfMngxXMw
+
+### 12. Гость: очистить корзину
+DELETE http://127.0.0.1:8000/api/cart/clear/
+
+### 13. Авторизованный: очистить корзину
+DELETE http://127.0.0.1:8000/api/cart/clear/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzNDI4MzM5LCJpYXQiOjE3ODM0MjY1MzksImp0aSI6IjQxMmJhYzQzNzQyNTRkMGE5M2Y1OTZkYTYwMTc2YTFmIiwidXNlcl9pZCI6IjMifQ.n8FaYuwrtYsvL_zKWWUqTv_DPPhTnGZv_ECHj26t794

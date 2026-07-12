@@ -1,0 +1,106 @@
+### 1. Получить список всех товаров (публичный)
+GET http://localhost:8000/api/products/
+Accept: application/json
+
+### 2. Получить детали конкретного товара по ID (публичный)
+GET http://localhost:8000/api/products/1/
+Accept: application/json
+
+### 3. Получить список всех категорий (публичный)
+GET http://localhost:8000/api/categories/
+Accept: application/json
+
+### 4. Получить детали конкретной категории по ID (публичный)
+GET http://localhost:8000/api/categories/1/
+Accept: application/json
+
+### 5. Получить список всех брендов (публичный)
+GET http://localhost:8000/api/brands/
+Accept: application/json
+
+### 6. Получить детали конкретного бренда по ID (публичный)
+GET http://localhost:8000/api/brands/1/
+Accept: application/json
+
+### АДМИНИСТРАТИВНЫЕ ЭНДПОИНТЫ (только для менеджеров)
+
+### Сначала залогинимся как менеджер
+POST http://127.0.0.1:8000/api/users/login/
+Content-Type: application/json
+
+{
+    "email": "bakugo@ya.ru",
+    "password": "loxlelik1"
+}
+
+### 7. Создать новую категорию (менеджер)
+POST http://localhost:8000/api/admin/categories/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzMzY2MzM2LCJpYXQiOjE3ODMzNjQ1MzYsImp0aSI6ImVmYTVjMmNmODFkNjQwMzA4OTg5MmM5MzU1YzNjNDE2IiwidXNlcl9pZCI6IjIifQ.fj4_CWf0DD2GAPi4U6ETv3rjyT-kmzHyY_InQ4GJYxg
+
+{
+  "category_name": "Для губ",
+  "category_description": "Помады, блески, бальзамы и все, что нужно для ухода за губами."
+}
+
+### 8. Создать новый бренд (менеджер)
+POST http://localhost:8000/api/admin/brands/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzMzY2MzM2LCJpYXQiOjE3ODMzNjQ1MzYsImp0aSI6ImVmYTVjMmNmODFkNjQwMzA4OTg5MmM5MzU1YzNjNDE2IiwidXNlcl9pZCI6IjIifQ.fj4_CWf0DD2GAPi4U6ETv3rjyT-kmzHyY_InQ4GJYxg
+
+{
+  "brand_name": "DARLING*",
+  "brand_country": "Южная Корея",
+  "brand_description": "DARLING* — это бренд, который воплощает в себе идею красоты и ухода за кожей. Мы стремимся создавать продукты, которые не только улучшают внешний вид, но и заботятся о здоровье кожи. Наша миссия — помочь каждому человеку чувствовать себя уверенно и красиво в своей коже."
+}
+
+### 9. Создать новый товар (менеджер)
+POST http://localhost:8000/api/admin/products/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzMzY2MzM2LCJpYXQiOjE3ODMzNjQ1MzYsImp0aSI6ImVmYTVjMmNmODFkNjQwMzA4OTg5MmM5MzU1YzNjNDE2IiwidXNlcl9pZCI6IjIifQ.fj4_CWf0DD2GAPi4U6ETv3rjyT-kmzHyY_InQ4GJYxg
+
+{
+  "product_name": "DARLING* Wet Kiss 03",
+  "product_description": "Идеальный ПОЛУПРОЗРАЧНЫЙ блеск-фондю с мгновенным ЭФФЕКТОМ УВЕЛИЧЕНИЯ губ. Всего одно движение, и твои губы ощутят всю прелесть этой невесомой, тающей текстуры желе, которая смягчает их, не оставляя ощущения липкости. Приятный ментоловый холодок, как бонус. Ммм, yum-yum!",
+  "purpose": "Помада для губ",
+  "price": "680.00",
+  "stock_quantity": 50,
+  "product_image": "https://ccdn.goldapple.ru/p/p/19000003021/web/696d67416464335064708ddc47ce88a4358fullhd.webp",
+  "brand": 1,
+  "product_category": 1
+}
+
+### 10. Изменить данные бренда (менеджер)
+PATCH http://localhost:8000/api/admin/brands/1/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzMzY2MzM2LCJpYXQiOjE3ODMzNjQ1MzYsImp0aSI6ImVmYTVjMmNmODFkNjQwMzA4OTg5MmM5MzU1YzNjNDE2IiwidXNlcl9pZCI6IjIifQ.fj4_CWf0DD2GAPi4U6ETv3rjyT-kmzHyY_InQ4GJYxg
+
+{
+  "brand_country": " Южная Корея"
+}
+
+### 11. Попытка создать товар без авторизации (должна вернуть 403)
+POST http://localhost:8000/api/admin/products/
+Content-Type: application/json
+
+{
+  "product_name": "Тестовый товар",
+  "price": "100.00",
+  "stock_quantity": 10,
+  "brand": 1,
+  "product_category": 1
+}
+
+
+### 12. Попытка создать товар с авторизацией обычного пользователя (должна вернуть 403)
+POST http://localhost:8000/api/admin/products/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzMzQ3MzM5LCJpYXQiOjE3ODMzNDU1MzksImp0aSI6IjM2YTIzNzA0MzNiYzQyYTM5NWU3ZjI4MWNhYWEzYWQzIiwidXNlcl9pZCI6IjMifQ.HGBzKjY3RI9R1rv6H_QiWNOEtG-Lq1oiEo2fQgVbEUg
+
+{
+  "product_name": "Тестовый товар",
+  "price": "100.00",
+  "stock_quantity": 10,
+  "brand": 1,
+  "product_category": 1
+}

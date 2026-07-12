@@ -1,0 +1,70 @@
+@startuml
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+
+' --- Внешние актеры ---
+actor "Пользователь\nweb/mobile" as User
+actor "Менеджер" as Manager
+
+' --- Устройство пользователя ---
+node "Устройство/пользователя" as Device {
+    component "Web-браузер" as Browser
+}
+
+' --- Серверная часть ---
+node "Сервер вендора\nDocker Host" as DockerHost {
+
+    ' Верхний уровень: Nginx
+    node "Контейнер nginx" as Nginx {
+        component "Nginx\nreverse proxy" as NginxComp
+    }
+
+    ' Средний уровень: Frontend
+    node "Контейнер frontend" as Frontend {
+        component "Лёгкий frontend\nHTML/CSS/JavaScript" as FrontendComp
+    }
+
+    ' Нижний уровень: Django
+    node "Контейнер Django backend" as Django {
+        component "api_gateway\nBFF API слой" as BffComp
+        rectangle "users" as ModUsers
+        rectangle "catalog" as ModCatalog
+        rectangle "cart" as ModCart
+        rectangle "orders" as ModOrders
+    }
+
+    
+    ' Связи модулей с DRF
+    BffComp -down- ModUsers
+    BffComp -down- ModCatalog
+    BffComp -down- ModCart
+    BffComp -down- ModOrders : "маршрутизация API-запросов"
+
+    ' Уровень базы данных
+    node "Контейнер базы данных" as DBContainer {
+        database "PostgreSQL" as Postgres
+    }
+}
+
+' --- Связи (Relationships) ---
+
+' Пользователи -> Устройство
+User -down-> Browser : "работа с магазином"
+Manager -down-> Browser : "работа с менеджер-панелью"
+
+' Устройство -> Nginx
+Browser -down-> NginxComp : "HTTPS-запросы"
+
+' Nginx -> Frontend
+NginxComp -down-> FrontendComp : "выдача статических файлов"
+
+' Nginx -> BFF
+NginxComp -down-> BffComp : "RESTAPI / JSON"
+
+' Django Модули -> База данных (PostgreSQL)
+ModUsers -down-> Postgres : "пользователи,\nавторизация"
+ModCatalog -down-> Postgres : "товары,\nкатегории,\nбренды"
+ModCart -down-> Postgres : "корзина,\nпозиции корзины"
+ModOrders -down-> Postgres : "заказы,\nстатусы,\nадрес доставки"
+
+@enduml

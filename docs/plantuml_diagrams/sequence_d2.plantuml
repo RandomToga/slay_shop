@@ -1,0 +1,89 @@
+@startuml
+title "Изменение статуса заказа (PATCH /api/admin/orders/{id}/status/)"
+autonumber
+
+' Определение типов акторов и участников
+actor "Менеджер" as Manager
+
+' === FRONTEND (Boundary) ===
+boundary "Admin Panel (Frontend)" as AdminPanel
+
+' === BACKEND (Control) ===
+control "AdminOrderStatusUpdateView" as StatusView
+control "IsManager (Permission)" as Permission
+control "OrderStatusUpdateSerializer" as StatusSerializer
+
+' === BACKEND (Entity/Database) ===
+entity "Order (Entity)" as OrderEntity
+entity "OrderStatus (Entity)" as StatusEntity
+database "Database" as DB
+
+Manager -> AdminPanel: Выбирает заказ и новый статус
+
+AdminPanel -> StatusView: PATCH /api/admin/orders/{id}/status/\n{status_id: 2}
+activate StatusView
+
+StatusView -> StatusView: Получить заказ\nпо order_id
+
+StatusView -> OrderEntity: get_object_or_404(Order, order_id=id)
+activate OrderEntity
+OrderEntity -> DB: SELECT * FROM order\nWHERE order_id = ?
+DB --> OrderEntity: Данные заказа
+OrderEntity --> StatusView: Объект заказа
+deactivate OrderEntity
+
+StatusView -> Permission: Проверка прав\n(IsManager)
+activate Permission
+
+Permission -> Permission: request.user.is_manager()
+
+alt Пользователь не менеджер
+    Permission --> StatusView: False
+    deactivate Permission
+    StatusView --> AdminPanel: 403 Forbidden
+    deactivate StatusView
+    note right: Доступ запрещен
+else Менеджер
+    Permission --> StatusView: True
+    deactivate Permission
+    
+    StatusView -> StatusSerializer: Создание сериализатора\nс данными запроса
+    activate StatusSerializer
+    
+    StatusSerializer -> StatusSerializer: validate()\nПроверка наличия статуса
+    
+    StatusSerializer -> StatusEntity: Получить статус\nOrderStatus.objects.get(status_id=...)
+    activate StatusEntity
+    StatusEntity -> DB: SELECT * FROM order_status\nWHERE status_id = ?
+    DB --> StatusEntity: Данные статуса
+    StatusEntity --> StatusSerializer: Объект статуса
+    deactivate StatusEntity
+    
+    alt Статус не найден
+        StatusSerializer --> StatusView: ValidationError
+        StatusView --> AdminPanel: 400 Bad Request
+        deactivate StatusView
+        deactivate StatusSerializer
+        note right: Процесс завершается
+    else Статус найден
+        StatusSerializer -> StatusSerializer: update()\ninstance.order_status = новый_статус
+        
+        StatusSerializer -> OrderEntity: instance.save(update_fields=('order_status',))
+        activate OrderEntity
+        OrderEntity -> DB: UPDATE order\nSET order_status_status_id = ?\nWHERE order_id = ?
+        DB --> OrderEntity: Статус обновлен
+        OrderEntity --> StatusSerializer: Статус обновлен
+        deactivate OrderEntity
+        
+        StatusSerializer --> StatusView: Обновленный заказ
+        deactivate StatusSerializer
+        
+        
+        StatusView -> StatusView: Сериализация полного заказа\nOrderSerializer(instance)
+        
+        StatusView --> AdminPanel: 200 OK\n{\n  order_id, status,\n  items, total_amount,\n  ...\n}
+        deactivate StatusView
+    end
+end
+
+@enduml

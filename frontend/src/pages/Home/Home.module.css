@@ -1,0 +1,395 @@
+.container {
+  min-height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at top left, rgba(234, 156, 175, 0.3), rgba(212, 255, 104, 0.7));
+  position: relative;
+  overflow-x: hidden;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+  padding: 0 20px; /* Убрали 15% сверху, оставили только отступы по бокам */
+  box-sizing: border-box;
+
+  /* ГЛАВНОЕ: Включаем Flexbox */
+  display: flex;
+  flex-direction: column; /* Элементы идут друг за другом сверху вниз */
+}
+
+.contentWrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 30px 0; /* Отступы сверху и снизу от контента (от Header и Footer) */
+
+  /* ГЛАВНОЕ: Заставляем этот блок занимать всё свободное место */
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+}
+
+/* Чтобы фоновые тексты оставались на фоне, как и задумано */
+.bgText, .bgTextSecond {
+  position: absolute;
+  font-size: 300px;
+  font-weight: 900;
+  color: rgba(255, 210, 221);
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  transform: rotate(50deg);
+  z-index:-1;
+  pointer-events: none;
+  user-select: none;
+}
+.bgText { top: 20%; left: -50px; }
+.bgTextSecond { top: 40%; right: -50px; }
+
+/* Сетка для карточек */
+.cardsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  align-items: center;
+  margin-top: 90px; /* отступ от заголовка Каталог до первой карточки */
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 25%;
+}
+
+/* Общий контейнер для сообщений */
+.messageBlock {
+  /* Убираем жесткую ширину 220px отсюда, ширина будет задаваться в каждом конкретном блоке */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  position: relative; /* ВАЖНО: чтобы плашка Note могла позиционироваться относительно этого блока */
+  margin-top: 25px; /* Отступ сверху, чтобы плашка не наезжала на соседний ряд */
+}
+
+/* ---------- NOTE BLOCK ---------- */
+.noteBlock {
+  background: #FFC0CF;
+  padding: 35px 35px 35px 45px; /* Отступы внутри контейнера для текста */
+  border-radius: 20px;
+  font-size: 14px;
+  text-align: center;
+  color: #4a4a4a;
+  line-height: 1.3; /*Межстрочный интервал*/
+  width: 380px;
+  height: 70%;
+  box-sizing: border-box;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+  transform: rotate(5deg);
+
+  overflow: visible;
+}
+
+/* Белая плашка "Note" */
+.noteTitle {
+  position: absolute;
+  top: -16px; /* Выдвигаем плашку вверх за пределы блока */
+  right: 15px;
+  background: #ffffff;
+  padding: 6px 22px;
+  border-radius: 30px;
+  border: 4px solid #EA9CAF;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: #7a5a63;
+  letter-spacing: 0.5px;
+  z-index: 3;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+/* Текст внутри Note */
+.noteText {
+  margin: 0; /* Убираем стандартные отступы браузера */
+  font-style: italic; /* Можно добавить курсив для красоты, по желанию */
+}
+
+/* Декор для Note (Бантик и Звезда) */
+.noteBlock::before {
+  content: '';
+  position: absolute;
+  top: -55px;
+  left: -90px;
+  width: 180px; 
+  height: 180px;
+  background-image: url('../../assets/stickers/bow.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(20deg);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.noteBlock::after {
+  content: '';
+  position: absolute;
+  bottom: -35px;
+  right: -60px;
+  width: 120px;
+  height: 120px;
+  background-image: url('../../assets/stickers/star.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(45deg);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --- Блок Диска (Disk) --- */
+.diskBlock {
+  width: 350px; /* Диск и плашка должны быть чуть шире обычной карточки */
+  height: 350px;
+  box-sizing: border-box;
+  display: flex;
+  text-align: center;
+  position: relative; /* ВАЖНО: чтобы плашка могла двигаться внутри диска */
+  
+  /* Фон-картинка диска */
+  background-image: url('../../assets/stickers/disk.png');
+  background-size: cover; /* Картинка заполнит весь квадрат */
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transform: rotate(-5deg);
+
+  overflow: visible;
+}
+
+/* --- Текстовая плашка поверх диска --- */
+.diskTextBox {
+  background: #ffffff;
+  padding: 10px 25px;
+  border-radius: 20px;
+  border: 3px solid #EA9CAF;
+  
+  font-size: 15px;
+  font-weight: 500;
+  color: #729F00;
+  line-height: 1.3;
+  
+  width: 100%; 
+  box-sizing: border-box;
+  z-index: 2; 
+  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+  
+  position: absolute; 
+  bottom: 120px; 
+  right: -90px;  
+  
+  /* --- ДОБАВЛЕНА СТРЕЛКА --- */
+  /* Используем псевдоэлемент, чтобы прикрепить картинку справа */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%; /* Выравниваем стрелку по вертикали ровно посередине плашки */
+    transform: translateY(-50%); /* Корректировка для идеального центрирования по высоте */
+    
+    /* Выдвигаем стрелку за правый край плашки */
+    right: -230px; /* Настройте это значение, если нужно дальше или ближе */
+    
+    /* Размеры стрелки */
+    width: 200px; 
+    height: 200px; 
+    
+    /* Подключаем картинку */
+    background-image: url('../../assets/stickers/arrow.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    z-index: 3; /* Чтобы стрелка была поверх всего */
+    pointer-events: none; /* Чтобы стрелка не мешала кликать */
+  }
+}
+/* ---------- CUTE MESSAGE (Очки) ---------- */
+.cuteMessageBlock { 
+  background: #ffffff;
+  padding: 35px 35px 35px 45px; /* Отступы внутри контейнера для текста */
+  border-radius: 20px;
+  border: 3px solid #EA9CAF;
+  font-size: 30px;
+  text-align: center;
+  color: #EA9CAF;
+  line-height: 1.3; /*Межстрочный интервал*/
+  width: 350px;
+  height: 50%;
+  box-sizing: border-box;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+  transform: rotate(5deg);
+
+  overflow: visible;
+}
+
+/* --- Текстовая плашка поверх очков --- */
+.cuteMessageText {
+  margin: 0; /* Убираем стандартные отступы браузера */
+}
+
+/* Декор для Note (Бантик и Звезда) */
+.cuteMessageBlock::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: -70px;
+  width: 200px; 
+  height: 200px;
+  background-image: url('../../assets/stickers/glasses.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(-20deg);
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+/* ---------- PHONE MESSAGE (Телефон) ---------- */
+.phoneMessageBlock { 
+  width: 260px;
+  min-height: 240px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  
+  /* Фон-картинка телефона */
+  background-image: url('../../assets/stickers/phone.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  padding: 30px;
+  border-radius: 0; /* Убираем скругление */
+  font-size: 16px; 
+  color: #5a3a4a; /* Темный цвет текста для читаемости на светлом фоне */
+  line-height: 1.4;
+  z-index: 1;
+}
+
+
+/* ---------- BOTTOM QUOTE (Тамагочи) ---------- */
+.bottomQuoteBlock { 
+  width: 280px;
+  min-height: 240px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  
+  /* Фон-картинка тамагочи */
+  background-image: url('../../assets/stickers/tamagochi.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  padding: 30px;
+  border-radius: 0; /* Убираем скругление */
+  font-size: 15px; 
+  color: #3a3a3a; /* Темный текст */
+  line-height: 1.4;
+  font-weight: 500;
+  z-index: 1;
+}
+
+/* --- ЧЕРЕДОВАНИЕ НАКЛОНА КАРТОЧЕК ТОВАРОВ --- */
+
+/* Нечетные карточки (1-я, 3-я, 5-я...) наклоняем влево */
+.cardWrapper:nth-child(odd) {
+  transform: rotate(-5deg);
+  transition: transform 0.2s ease; /* Плавный переход при наведении */
+}
+
+/* Четные карточки (2-я, 4-я, 6-я...) наклоняем вправо */
+.cardWrapper:nth-child(even) {
+  transform: rotate(5deg);
+  transition: transform 0.2s ease;
+}
+
+/* (Опционально) Эффект при наведении, чтобы карточка выпрямлялась */
+.cardWrapper:hover {
+  transform: rotate(0deg) scale(1.02); /* Выравнивается и чуть увеличивается */
+  z-index: 10;
+}
+
+/* --- БЕГУЩАЯ СТРОКА (Ticker) --- */
+.tickerWrapper {
+  width: 100%;
+  overflow: hidden;
+  
+  /* Меняем фон на нежно-розовый с прозрачностью */
+  background: rgba(255, 192, 207, 0.4); 
+  backdrop-filter: blur(5px);
+  
+  padding: 12px 0;
+  margin-top: 20px; /* ОТСТУП СВЕРХУ, чтобы не прилипала к хедеру */
+  margin-bottom: 40px;
+  
+  /* Меняем границы на розовые */
+  border-top: 2px solid #FFC0CF;
+  border-bottom: 2px solid #FFC0CF;
+  
+  position: relative;
+  z-index: 5;
+}
+
+.tickerTrack {
+  display: flex;
+  white-space: nowrap;
+  animation: tickerScroll 25s linear infinite; /* Чуть медленнее для красоты */
+}
+
+.tickerItem {
+  display: inline-block;
+  padding: 0 40px;
+  font-size: 18px;
+  font-weight: 800;
+  
+  /* Меняем цвет текста на розовый */
+  color: #EA9CAF; 
+  
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+}
+
+/* Анимация для бегущей строки */
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* --- ЗАГОЛОВОК КАТАЛОГА --- */
+.catalogTitle {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 900;
+  color: #6e4559;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  
+  /* Убираем жесткий нижний отступ, чтобы он не висел над карточками */
+  margin: 0; 
+  
+  padding-bottom: 10px;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+  
+  /* Красивая розовая тень */
+  text-shadow: 2px 2px 0px rgba(234, 156, 175, 0.4);
+  
+  /* Подчеркивание */
+  border-bottom: 3px solid rgba(234, 156, 175, 0.5);
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}

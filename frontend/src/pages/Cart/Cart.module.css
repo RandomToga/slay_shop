@@ -1,0 +1,636 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Comic+Sans+MS&display=swap');
+
+:global(*) {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:global(body) {
+    background: #faf8f6;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* =======================
+        CONTAINER
+======================= */
+
+.container {
+    min-height: 100vh;
+    width: 100%;
+    background: radial-gradient(circle at top left, rgba(234, 156, 175, 0.3), rgba(212, 255, 104, 0.7));
+    position: relative;
+    overflow-x: hidden;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contentWrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 30px 0;
+    flex: 1;
+}
+
+/* =======================
+        BACKGROUND TEXTS
+======================= */
+
+.bgText,
+.bgTextSecond {
+    position: absolute;
+    font-size: 300px;
+    font-weight: 900;
+    color: rgba(255, 210, 221, 0.15);
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    transform: rotate(50deg);
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+}
+
+.bgText {
+    top: 20%;
+    left: -50px;
+}
+
+.bgTextSecond {
+    top: 40%;
+    right: -50px;
+}
+
+/* =======================
+        HEADER TITLE
+======================= */
+
+.title {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 45px;
+    position: relative;
+    z-index: 2;
+}
+
+.note {
+    position: absolute;
+    left: 5%;
+    top: -10px;
+    background: white;
+    padding: 12px 22px;
+    border-radius: 999px;
+    transform: rotate(-8deg);
+    font-size: 13px;
+    font-weight: 700;
+    color: #777;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+}
+
+.title h1 {
+    font-size: 62px;
+    color: #df6f97;
+    letter-spacing: 6px;
+    font-weight: 800;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+    text-shadow: 3px 3px 0px rgba(234, 156, 175, 0.3);
+}
+
+.title p {
+    margin-top: 12px;
+    color: #777;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+/* =======================
+        LAYOUT
+======================= */
+
+.wrapper {
+    width: min(1200px, 92%);
+    margin: auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    padding-bottom: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+/* =======================
+        CARDS
+======================= */
+
+.cartSection,
+.summary {
+    background: rgba(255, 255, 255, 0.86);
+    backdrop-filter: blur(18px);
+    border-radius: 28px;
+    padding: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+.summary {
+    position: sticky;
+    top: 30px;
+    height: fit-content;
+}
+
+/* =======================
+        CART ITEM
+======================= */
+
+.cartItem {
+    display: grid;
+    grid-template-columns: 90px 1fr auto auto auto;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 18px;
+    border-radius: 22px;
+    background: white;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cartItem:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(234, 156, 175, 0.15);
+}
+
+.imageBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagePlaceholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #fff, #ffeef4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 34px;
+}
+
+.info h3 {
+    color: #444;
+    font-size: 18px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.info p {
+    color: #888;
+    font-weight: 600;
+}
+
+/* =======================
+        QUANTITY
+======================= */
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid #df6f97;
+    background: transparent;
+    color: #df6f97;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity button:hover {
+    background: #df6f97;
+    color: white;
+    transform: scale(1.05);
+}
+
+.quantity span {
+    font-weight: 600;
+    font-size: 18px;
+    min-width: 30px;
+    text-align: center;
+}
+
+.total {
+    font-weight: 700;
+    color: #df6f97;
+    font-size: 18px;
+}
+
+.remove {
+    background: transparent;
+    border: none;
+    color: #ccc;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.remove:hover {
+    color: #f5576c;
+    background: rgba(245, 87, 108, 0.1);
+    transform: scale(1.1);
+}
+
+/* =======================
+        SUMMARY
+======================= */
+
+.summaryHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.summary h2 {
+    font-size: 28px;
+    color: #444;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+}
+
+.orderBadge {
+    background: #df6f97;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.summaryRow {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.summaryRow strong {
+    color: #333;
+}
+
+.totalPrice {
+    font-size: 24px;
+    color: #df6f97 !important;
+    font-weight: 800;
+}
+
+.divider {
+    border-top: 2px dashed rgba(223, 111, 151, 0.2);
+    margin: 15px 0;
+}
+
+/* =======================
+        SELECTS
+======================= */
+
+.selectGroup {
+    margin-bottom: 20px;
+}
+
+.selectGroup label {
+    display: block;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.selectGroup select {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 16px;
+    border: 2px solid rgba(223, 111, 151, 0.2);
+    background: white;
+    font-size: 15px;
+    color: #333;
+    transition: all 0.2s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23df6f97' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    cursor: pointer;
+}
+
+.selectGroup select:hover {
+    border-color: #df6f97;
+}
+
+.selectGroup select:focus {
+    outline: none;
+    border-color: #df6f97;
+    box-shadow: 0 0 0 4px rgba(223, 111, 151, 0.15);
+}
+
+.selectGroup select option {
+    padding: 10px;
+}
+
+/* =======================
+        BUTTONS
+======================= */
+
+.mainButton {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+.mainButton:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+}
+
+.mainButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.clearButton {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid rgba(223, 111, 151, 0.3);
+    border-radius: 16px;
+    background: transparent;
+    color: #888;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 12px;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+}
+
+.clearButton:hover {
+    border-color: #f5576c;
+    color: #f5576c;
+    background: rgba(245, 87, 108, 0.05);
+}
+
+/* =======================
+        LOADING
+======================= */
+
+.loading {
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 4px solid #f0f0f0;
+    border-top: 4px solid #df6f97;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =======================
+        EMPTY CART
+======================= */
+
+.emptyPage {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    z-index: 2;
+    position: relative;
+}
+
+.emptyContent {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 60px 80px;
+    border-radius: 40px;
+    border: 2px solid rgba(223, 111, 151, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    max-width: 500px;
+}
+
+.emptyIcon {
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.emptyPage h1 {
+    font-size: 36px;
+    color: #df6f97;
+    margin-bottom: 15px;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+}
+
+.emptyPage p {
+    color: #777;
+    font-size: 18px;
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+/* =======================
+        ANIMATIONS
+======================= */
+
+.cartSection,
+.summary {
+    animation: fadeUp 0.6s ease;
+}
+
+.cartItem {
+    animation: fadeItem 0.45s ease;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeItem {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* =======================
+        SCROLLBAR
+======================= */
+
+:global(::-webkit-scrollbar) {
+    width: 10px;
+}
+
+:global(::-webkit-scrollbar-track) {
+    background: #faf8f6;
+}
+
+:global(::-webkit-scrollbar-thumb) {
+    background: #ebb2c9;
+    border-radius: 20px;
+}
+
+:global(::-webkit-scrollbar-thumb:hover) {
+    background: #df6f97;
+}
+
+/* =======================
+        RESPONSIVE
+======================= */
+
+@media (max-width: 992px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .summary {
+        position: static;
+    }
+
+    .title h1 {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 768px) {
+    .note {
+        display: none;
+    }
+
+    .title {
+        margin-top: 30px;
+    }
+
+    .title h1 {
+        font-size: 40px;
+    }
+
+    .cartItem {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .imageBlock {
+        justify-content: center;
+    }
+
+    .quantity {
+        justify-content: center;
+    }
+
+    .remove {
+        width: 100%;
+    }
+
+    .summary {
+        padding: 22px;
+    }
+
+    .bgText,
+    .bgTextSecond {
+        font-size: 120px;
+    }
+
+    .emptyContent {
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrapper {
+        width: 95%;
+    }
+
+    .cartSection,
+    .summary {
+        padding: 18px;
+        border-radius: 20px;
+    }
+
+    .title h1 {
+        font-size: 34px;
+        letter-spacing: 2px;
+    }
+
+    .summary h2 {
+        font-size: 24px;
+    }
+
+    .quantity button {
+        width: 34px;
+        height: 34px;
+    }
+
+    .mainButton,
+    .clearButton {
+        height: 50px;
+        font-size: 15px;
+    }
+
+    .bgText,
+    .bgTextSecond {
+        font-size: 80px;
+    }
+
+    .emptyContent {
+        padding: 30px 20px;
+    }
+
+    .emptyPage h1 {
+        font-size: 28px;
+    }
+}

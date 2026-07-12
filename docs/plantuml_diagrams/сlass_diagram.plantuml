@@ -1,0 +1,583 @@
+@startuml
+hide circle
+left to right direction
+
+' ============================================================
+' УСЛОВНЫЕ ОБОЗНАЧЕНИЯ
+' ============================================================
+skinparam class {
+    BackgroundColor Pink
+    BorderColor Black
+    ArrowColor Black
+}
+skinparam package {
+    BackgroundColor LightYellow
+    BorderColor Black
+    FontColor Black
+}
+skinparam stereotype {
+    BackgroundColor White
+    BorderColor Black
+    FontColor Black
+}
+skinparam note {
+    BackgroundColor White
+    BorderColor Black
+    FontColor Black
+}
+
+
+' ============================================================
+' ПАКЕТ USERS
+' ============================================================
+
+package "App users" as users {
+    package "Models" {
+        class RoleOfUser <<Entity>> {
+            +role_id: AutoField (PK)
+            +role_name: CharField(100, unique)
+            --
+            +__str__(): str
+        }
+        class User <<Entity>> {
+            +user_id: AutoField (PK)
+            +first_name: CharField(100)
+            +last_name: CharField(100)
+            +email: EmailField(unique)
+            +phone: CharField(20, unique, null)
+            +password: CharField
+            +registration_date: DateTimeField(auto_now_add)
+            --
+            +USERNAME_FIELD: email
+            +REQUIRED_FIELDS: [first_name, last_name, phone]
+            +__str__(): str
+            +is_manager(): bool
+            +is_customer(): bool
+        }
+        class DeliveryAddress <<Entity>> {
+            +address_id: AutoField (PK)
+            +city: CharField(100)
+            +street: CharField(100)
+            +house: CharField(20)
+            +apartment: CharField(20, null)
+            +is_deleted: BooleanField(default=False)
+            --
+            +__str__(): str
+        }
+    }
+
+    ' Связи между сущностями
+    RoleOfUser "1" o-- "*" User : "имеет роль"
+    User "1" o-- "*" DeliveryAddress : "владеет"
+
+    package "Serializers" {
+        class RegisterSerializer <<Boundary>> {
+            +password: CharField(write_only)
+            --
+            +Meta.model: User
+            +Meta.fields: tuple
+            +create(validated_data): User
+        }
+        class UserSerializer <<Boundary>> {
+            +role_name: CharField(read_only)
+            --
+            +Meta.model: User
+            +Meta.fields: tuple
+        }
+        class LoginSerializer <<Boundary>> {
+            --
+            +validate(attrs): dict
+        }
+        class DeliveryAddressSerializer <<Boundary>> {
+            --
+            +Meta.model: DeliveryAddress
+            +Meta.fields: tuple
+            +create(validated_data): DeliveryAddress
+        }
+        RegisterSerializer ..> User : "сериализует"
+        UserSerializer ..> User : "сериализует"
+        LoginSerializer ..> User : "аутентифицирует"
+        DeliveryAddressSerializer ..> DeliveryAddress : "сериализует"
+    }
+
+    package "Views" {
+        class RegisterView <<Control>> {
+            +queryset: QuerySet
+            +serializer_class: RegisterSerializer
+            --
+            +create(request): Response
+        }
+        class LoginView <<Control>> {
+            +serializer_class: LoginSerializer
+            --
+            +post(request): Response
+        }
+        class UserDetailView <<Control>> {
+            +serializer_class: UserSerializer
+            +permission_classes: [IsAuthenticated]
+            --
+            +get_object(): User
+        }
+        class DeliveryAddressViewSet <<Control>> {
+            +serializer_class: DeliveryAddressSerializer
+            +permission_classes: [IsAuthenticated]
+            --
+            +get_queryset(): QuerySet
+            +perform_destroy(instance): void
+        }
+    }
+
+    ' Связи Views -> Serializers
+    RegisterView --> RegisterSerializer : "использует"
+    LoginView --> LoginSerializer : "использует"
+    UserDetailView --> UserSerializer : "использует"
+    DeliveryAddressViewSet --> DeliveryAddressSerializer : "использует"
+
+    note right of User
+        Кастомная модель пользователя
+        - USERNAME_FIELD = 'email'
+        - Используется JWT аутентификация
+        - Мягкое удаление адресов
+    end note
+    note right of RegisterView
+        Автоматически назначает
+        роль "Пользователь" при
+        регистрации
+    end note
+}
+
+' ============================================================
+' ПАКЕТ CATALOG
+' ============================================================
+package "App catalog" as catalog{
+    package "Models" {
+        class ProductCategory <<Entity>> {
+            +category_id: AutoField (PK)
+            +category_name: CharField(150, unique)
+            +category_description: TextField(null)
+            --
+            +__str__(): str
+        }
+        class Brand <<Entity>> {
+            +brand_id: AutoField (PK)
+            +brand_name: CharField(150, unique)
+            +brand_country: CharField(100, null)
+            +brand_description: TextField(null)
+            --
+            +__str__(): str
+        }
+        class Product <<Entity>> {
+            +product_id: AutoField (PK)
+            +product_name: CharField(200)
+            +product_description: TextField(null)
+            +purpose: CharField(200, null)
+            +price: DecimalField(10,2)
+            +stock_quantity: IntegerField
+            +product_image: URLField(500, null)
+            --
+            +__str__(): str
+        }
+    }
+
+    ' Связи между сущностями
+    Brand "1" o-- "*" Product : "поставляет"
+    ProductCategory "1" o-- "*" Product : "содержит"
+
+    package "Serializers" {
+        class CategorySerializer <<Boundary>> {
+            +Meta.model: ProductCategory
+            +Meta.fields: tuple
+        }
+        class BrandSerializer <<Boundary>> {
+            +Meta.model: Brand
+            +Meta.fields: tuple
+        }
+        class ProductSerializer <<Boundary>> {
+            +Meta.model: Product
+            +Meta.fields: tuple
+        }
+        CategorySerializer ..> ProductCategory : "сериализует"
+        BrandSerializer ..> Brand : "сериализует"
+        ProductSerializer ..> Product : "сериализует"
+    }
+
+    package "Public ViewSets" {
+        class PublicCategoryViewSet <<Control>> {
+            +queryset: QuerySet
+            +serializer_class: CategorySerializer
+            --
+            +list()
+            +retrieve()
+        }
+        class PublicBrandViewSet <<Control>> {
+            +queryset: QuerySet
+            +serializer_class: BrandSerializer
+            --
+            +list()
+            +retrieve()
+        }
+        class PublicProductViewSet <<Control>> {
+            +queryset: QuerySet
+            +serializer_class: ProductSerializer
+            --
+            +list()
+            +retrieve()
+        }
+    }
+
+    package "Admin ViewSets" {
+        class AdminCategoryViewSet <<Control>> {
+            +queryset: QuerySet
+            +serializer_class: CategorySerializer
+            +permission_classes: [IsManager]
+            --
+            +list()
+            +retrieve()
+            +create()
+            +update()
+            +partial_update()
+            +destroy()
+        }
+        class AdminBrandViewSet <<Control>> {
+            +queryset: QuerySet
+            +serializer_class: BrandSerializer
+            +permission_classes: [IsManager]
+            --
+            +list()
+            +retrieve()
+            +create()
+            +update()
+            +partial_update()
+            +destroy()
+        }
+        class AdminProductViewSet <<Control>> {
+            +queryset: QuerySet
+            +serializer_class: ProductSerializer
+            +permission_classes: [IsManager]
+            --
+            +list()
+            +retrieve()
+            +create()
+            +update()
+            +partial_update()
+            +destroy()
+        }
+    }
+
+    ' Связи ViewSets -> Serializers
+    PublicCategoryViewSet --> CategorySerializer : "использует"
+    PublicBrandViewSet --> BrandSerializer : "использует"
+    PublicProductViewSet --> ProductSerializer : "использует"
+    AdminCategoryViewSet --> CategorySerializer : "использует"
+    AdminBrandViewSet --> BrandSerializer : "использует"
+    AdminProductViewSet --> ProductSerializer : "использует"
+}
+
+' ============================================================
+' ПАКЕТ CART
+' ============================================================
+package "App cart" as cart {
+    package "Models" {
+        class Cart <<Entity>> {
+            +cart_id: AutoField (PK)
+            +creation_date: DateTimeField(auto_now_add)
+            +update_date: DateTimeField(auto_now)
+            --
+            +total_price: property
+            +__str__(): str
+        }
+        class CartItem <<Entity>> {
+            +cart_item_id: AutoField (PK)
+            +product_quantity: PositiveIntegerField(default=1)
+            --
+            +subtotal: property
+            +__str__(): str
+        }
+    }
+
+    ' Связи между сущностями
+    Cart "1" o-- "*" CartItem : "содержит"
+    CartItem "*" --o "1" Product : "ссылается на"
+
+    package "Serializers" {
+        class CartItemSerializer <<Boundary>> {
+            +product_id: PrimaryKeyRelatedField
+            +product_name: CharField(read_only)
+            +price: DecimalField(read_only)
+            +total_price: DecimalField(read_only)
+            --
+            +Meta.model: CartItem
+            +Meta.fields: tuple
+            +validate(attrs): dict
+            +create(validated_data): CartItem
+        }
+        class CartSerializer <<Boundary>> {
+            +user_id: IntegerField(read_only)
+            +items: CartItemSerializer(many)
+            +total_amount: DecimalField(read_only)
+            --
+            +Meta.model: Cart
+            +Meta.fields: tuple
+        }
+        CartItemSerializer ..> CartItem : "сериализует"
+        CartItemSerializer ..> Product : "валидирует"
+        CartSerializer ..> Cart : "сериализует"
+    }
+
+    package "Views" {
+        class CartView <<Control>> {
+            +permission_classes: [AllowAny]
+            --
+            +get(request): Response
+        }
+        class CartClearView <<Control>> {
+            +permission_classes: [AllowAny]
+            --
+            +delete(request): Response
+        }
+        class CartItemCreateView <<Control>> {
+            +serializer_class: CartItemSerializer
+            +permission_classes: [AllowAny]
+            --
+            +create(request): Response
+        }
+        class CartItemDetailView <<Control>> {
+            +serializer_class: CartItemSerializer
+            +permission_classes: [AllowAny]
+            +lookup_field: cart_item_id
+            --
+            +get_queryset(): QuerySet
+            +patch(request): Response
+            +delete(request): Response
+        }
+    }
+
+    ' Связи Views -> Serializers
+    CartView --> CartSerializer : "использует"
+    CartView ..> CartItemSerializer : "использует (гость)"
+    CartClearView ..> Cart : "удаляет"
+    CartItemCreateView --> CartItemSerializer : "использует"
+    CartItemDetailView --> CartItemSerializer : "использует"
+
+    ' Функции работы с корзиной
+    note top of CartView
+        Поддерживает:
+        - Авторизованных пользователей (БД)
+        - Гостей (сессия)
+        Автоматическое слияние
+        корзины при входе
+    end note
+}
+
+' ============================================================
+' ПАКЕТ ORDERS
+' ============================================================
+package "App orders" as orders {
+    package "Models" {
+        class PaymentMethod <<Entity>> {
+            +payment_method_id: AutoField (PK)
+            +payment_method_name: CharField(100, unique)
+            --
+            +__str__(): str
+        }
+        class OrderStatus <<Entity>> {
+            +status_id: AutoField (PK)
+            +status_name: CharField(100, unique)
+            +status_description: TextField(null)
+            --
+            +__str__(): str
+        }
+        class Order <<Entity>> {
+            +order_id: AutoField (PK)
+            +order_date: DateTimeField(auto_now_add)
+            +total_amount: DecimalField(10,2)
+            --
+            +__str__(): str
+        }
+        class OrderItem <<Entity>> {
+            +order_item_id: AutoField (PK)
+            +product_quantity: IntegerField
+            +product_price_at_order: DecimalField(10,2)
+            --
+            +__str__(): str
+        }
+    }
+
+    ' Связи между сущностями
+    PaymentMethod "1" o-- "*" Order : "используется в"
+    OrderStatus "1" o-- "*" Order : "имеет"
+    User "1" o-- "*" Order : "оформляет"
+    DeliveryAddress "1" o-- "*" Order : "доставляется по"
+    Order "1" o-- "*" OrderItem : "содержит"
+    OrderItem "*" --o "1" Product : "ссылается на"
+
+    package "Serializers" {
+        class PaymentMethodSerializer <<Boundary>> {
+            +Meta.model: PaymentMethod
+            +Meta.fields: tuple
+        }
+        class OrderStatusSerializer <<Boundary>> {
+            +Meta.model: OrderStatus
+            +Meta.fields: tuple
+        }
+        class OrderItemSerializer <<Boundary>> {
+            +product_id: IntegerField(read_only)
+            +product_name: CharField(read_only)
+            +price_at_order: DecimalField(read_only)
+            +subtotal: SerializerMethodField
+            --
+            +Meta.model: OrderItem
+            +Meta.fields: tuple
+            +get_subtotal(obj): Decimal
+        }
+        class OrderSerializer <<Boundary>> {
+            +user_id: IntegerField(read_only)
+            +status: OrderStatusSerializer(read_only)
+            +payment_method: PaymentMethodSerializer(read_only)
+            +payment_method_id: PrimaryKeyRelatedField(write_only)
+            +address_id: PrimaryKeyRelatedField(write_only)
+            +delivery_address: DeliveryAddressSerializer(read_only)
+            +items: OrderItemSerializer(many, read_only)
+            +total_amount: DecimalField(read_only)
+            --
+            +Meta.model: Order
+            +Meta.fields: tuple
+            +validate_address_id(value): DeliveryAddress
+            +validate(attrs): dict
+            +create(validated_data): Order
+        }
+        class OrderStatusUpdateSerializer <<Boundary>> {
+            +status_id: PrimaryKeyRelatedField
+            --
+            +Meta.model: Order
+            +Meta.fields: tuple
+            +update(instance, validated_data): Order
+        }
+        PaymentMethodSerializer ..> PaymentMethod : "сериализует"
+        OrderStatusSerializer ..> OrderStatus : "сериализует"
+        OrderItemSerializer ..> OrderItem : "сериализует"
+        OrderSerializer ..> Order : "сериализует"
+        OrderStatusUpdateSerializer ..> Order : "обновляет статус"
+    }
+
+    package "Views" {
+        class OrderCreateView <<Control>> {
+            +serializer_class: OrderSerializer
+            +permission_classes: [IsAuthenticated]
+            --
+            +create(request): Response
+        }
+        class UserOrderListView <<Control>> {
+            +serializer_class: OrderSerializer
+            +permission_classes: [IsAuthenticated]
+            --
+            +get_queryset(): QuerySet
+        }
+        class UserOrderDetailView <<Control>> {
+            +serializer_class: OrderSerializer
+            +permission_classes: [IsAuthenticated]
+            +lookup_field: order_id
+            --
+            +get_queryset(): QuerySet
+        }
+        class AdminOrderListView <<Control>> {
+            +serializer_class: OrderSerializer
+            +permission_classes: [IsManager]
+            --
+            +get_queryset(): QuerySet
+        }
+        class AdminOrderDetailView <<Control>> {
+            +serializer_class: OrderSerializer
+            +permission_classes: [IsManager]
+            +lookup_field: order_id
+            +queryset: QuerySet
+        }
+        class AdminOrderStatusUpdateView <<Control>> {
+            +serializer_class: OrderStatusUpdateSerializer
+            +permission_classes: [IsManager]
+            +lookup_field: order_id
+            +queryset: QuerySet
+            --
+            +update(request): Response
+        }
+    }
+
+    ' Связи Views -> Serializers
+    OrderCreateView --> OrderSerializer : "использует"
+    UserOrderListView --> OrderSerializer : "использует"
+    UserOrderDetailView --> OrderSerializer : "использует"
+    AdminOrderListView --> OrderSerializer : "использует"
+    AdminOrderDetailView --> OrderSerializer : "использует"
+    AdminOrderStatusUpdateView --> OrderStatusUpdateSerializer : "использует"
+
+    note right of OrderSerializer
+        При создании заказа:
+        1. Проверяет корзину
+        2. Проверяет остатки
+        3. Создает Order и OrderItem'ы
+        4. Уменьшает stock_quantity
+        5. Очищает корзину
+    end note
+}
+
+' ============================================================
+' ПАКЕТ SLAY_API (глобальные настройки)
+' ============================================================
+package "App slay_api" as slay_api{
+    class IsManager <<Control>> {
+        +has_permission(request, view): bool
+    }
+
+    class PaymentMethodListView <<Control>> {
+        +queryset: QuerySet
+        +serializer_class: PaymentMethodSerializer
+        +permission_classes: [IsAuthenticated]
+    }
+
+    class OrderStatusListView <<Control>> {
+        +queryset: QuerySet
+        +serializer_class: OrderStatusSerializer
+        +permission_classes: [IsAuthenticated]
+    }
+
+    PaymentMethodListView --> PaymentMethodSerializer : "использует"
+    OrderStatusListView --> OrderStatusSerializer : "использует"
+}
+
+' ============================================================
+' МЕЖДУМОДУЛЬНЫЕ СВЯЗИ
+' ============================================================
+
+' Cart -> Product (использует)
+CartItem ..> Product : "ссылается на"
+
+' Cart -> User (владелец)
+Cart o-- User : "принадлежит"
+
+' Cart -> Cart (связь с сессией)
+CartView ..> User : "проверяет аутентификацию"
+
+' Orders -> Cart (создание заказа)
+OrderSerializer ..> Cart : "читает корзину"
+
+' Orders -> Users (пользователь и адрес)
+Order o-- User : "принадлежит"
+Order o-- DeliveryAddress : "доставляется по"
+
+' Users -> Cart (слияние корзины)
+LoginView ..> Cart : "merge_session_cart_to_user()"
+
+' Permissions
+AdminCategoryViewSet ..> IsManager : "использует"
+AdminBrandViewSet ..> IsManager : "использует"
+AdminProductViewSet ..> IsManager : "использует"
+AdminOrderListView ..> IsManager : "использует"
+AdminOrderDetailView ..> IsManager : "использует"
+AdminOrderStatusUpdateView ..> IsManager : "использует"
+
+users -[hidden]d- catalog
+catalog -[hidden]d- cart
+cart -[hidden]d- orders
+orders -[hidden]d- slay_api
+
+@enduml

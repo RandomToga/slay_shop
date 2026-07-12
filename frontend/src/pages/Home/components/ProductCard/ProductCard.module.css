@@ -1,0 +1,39 @@
+.card {
+  background: #ffffffb3; 
+  border: 3px solid #EA9CAF; /* Розовая внешняя граница */
+  border-radius: 20px;
+  padding: 30px 30px 30px 30px;
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Блок с картинкой */
+.imageWrapper {
+  aspect-ratio: 1 / 1; 
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  background: #ffffff;
+  
+  /* розовая рамка */
+  border: 3px solid #EA9CAF; 
+  border-radius: 20px; /* Внутренние углы тоже скруглены */
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Сама картинка товара */
+.productImage {
+  max-height: 100%;
+  object-fit: cover; 
+  object-position: center; /* Центрирует тубус внутри кадра */
+}
+
+.title { font-size: 16px; text-align: center; color: #333; margin-bottom: 5px; font-weight: 600; }
+.price { font-size: 18px; font-weight: bold; color: #6e4559; margin-bottom: 5px; }

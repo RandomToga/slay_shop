@@ -1,0 +1,107 @@
+@startuml
+title "Оформление заказа (POST /api/orders/create/)"
+autonumber
+
+' Определение типов акторов и участников
+actor "Пользователь" as User
+
+' === FRONTEND (Boundary) ===
+boundary "Клиент (Frontend)" as Client
+
+' === BACKEND (Control) ===
+control "OrderCreateView" as OrderView
+control "OrderSerializer" as OrderSerializer
+
+' === BACKEND (Entity/Database) ===
+entity "Cart (Entity)" as CartEntity
+entity "Product (Entity)" as ProductEntity
+entity "Order (Entity)" as OrderEntity
+entity "OrderItem (Entity)" as OrderItemEntity
+database "Database" as DB
+
+User -> Client: Заполняет данные заказа\nи нажимает "Оформить"
+
+Client -> OrderView: POST /api/orders/create/\n{address_id, payment_method_id}
+activate OrderView
+
+OrderView -> OrderView: Проверка прав\n(IsAuthenticated)
+
+OrderView -> OrderSerializer: Создание сериализатора\nс данными запроса
+activate OrderSerializer
+
+OrderSerializer -> OrderSerializer: validate_address_id()\nПроверка принадлежности адреса
+
+OrderSerializer -> OrderSerializer: validate()\nОсновная валидация
+
+OrderSerializer -> CartEntity: Получить корзину пользователя\nCart.objects.get(user=user)
+activate CartEntity
+CartEntity -> DB: SELECT * FROM cart\nWHERE user_id = ?
+DB --> CartEntity: Данные корзины
+CartEntity --> OrderSerializer: Корзина с товарами
+deactivate CartEntity
+
+alt Корзина пуста
+    OrderSerializer --> OrderView: ValidationError\n("Корзина пуста")
+    OrderView --> Client: 400 Bad Request
+    deactivate OrderView
+    deactivate OrderSerializer
+else Корзина не пуста
+    loop Для каждого товара в корзине
+        OrderSerializer -> ProductEntity: Проверить остаток\nproduct.stock_quantity
+        activate ProductEntity
+        ProductEntity -> DB: SELECT stock_quantity\nFROM product\nWHERE product_id = ?
+        DB --> ProductEntity: stock_quantity
+        ProductEntity --> OrderSerializer: stock_quantity
+        deactivate ProductEntity
+        
+        alt Недостаточно товара
+            OrderSerializer --> OrderView: ValidationError\n("Недостаточно товара")
+            OrderView --> Client: 400 Bad Request
+            deactivate OrderView
+            deactivate OrderSerializer
+        end
+    end
+    
+    OrderSerializer -> OrderSerializer: Сохраняет корзину\nв self._cart
+    note right: Транзакция начинается
+    
+    OrderSerializer -> OrderEntity: Создать заказ\nOrder.objects.create(\n  user, status,\n  payment_method,\n  delivery_address,\n  total_amount\n)
+    activate OrderEntity
+    OrderEntity -> DB: INSERT INTO order\n(...)
+    DB --> OrderEntity: Заказ создан
+    OrderEntity --> OrderSerializer: Заказ создан
+    deactivate OrderEntity
+    
+    loop Для каждого товара в корзине
+        OrderSerializer -> OrderItemEntity: Создать позицию заказа\nOrderItem.objects.create(\n  order, product,\n  product_quantity,\n  product_price_at_order\n)
+        activate OrderItemEntity
+        OrderItemEntity -> DB: INSERT INTO order_item\n(...)
+        DB --> OrderItemEntity: Позиция создана
+        OrderItemEntity --> OrderSerializer: Позиция создана
+        deactivate OrderItemEntity
+        
+        OrderSerializer -> ProductEntity: Уменьшить остаток\nproduct.stock_quantity -= quantity\nproduct.save()
+        activate ProductEntity
+        ProductEntity -> DB: UPDATE product\nSET stock_quantity = ?\nWHERE product_id = ?
+        DB --> ProductEntity: Остаток обновлен
+        ProductEntity --> OrderSerializer: Остаток обновлен
+        deactivate ProductEntity
+    end
+    
+    OrderSerializer -> CartEntity: Очистить корзину\ncart.items.all().delete()
+    activate CartEntity
+    CartEntity -> DB: DELETE FROM cart_item\nWHERE cart_id = ?
+    DB --> CartEntity: Корзина очищена
+    CartEntity --> OrderSerializer: Корзина очищена
+    deactivate CartEntity
+    
+    note right: Транзакция завершается
+    
+    OrderSerializer --> OrderView: Заказ создан
+    deactivate OrderSerializer
+    
+    OrderView --> Client: 201 Created\n{\n  order_id, items,\n  total_amount, ...\n}
+    deactivate OrderView
+end
+
+@enduml

@@ -1,0 +1,138 @@
+.header {
+  width: min(1350px, 92%);
+  margin: auto;
+  margin-top: 35px;
+  background: rgba(255,255,255,.78);
+  backdrop-filter: blur(16px);
+  border: 2px solid #fff;
+  border-radius: 35px;
+  padding: 18px 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow, 0 14px 35px rgba(0,0,0,.08));
+  position: relative;
+  z-index: 20;
+}
+
+.logo {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #D56989;
+  font-family: 'Permanent Marker', cursive;
+  transform: rotate(-4deg);
+}
+
+.logo span {
+  color: #C2DC80;
+}
+
+.nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.nav a {
+  text-decoration: none;
+  padding: 13px 22px;
+  background: white;
+  border-radius: 40px;
+  font-weight: 700;
+  color: #666;
+  transition: .35s;
+  border: 2px solid #f5f5f5;
+  box-shadow: 0 8px 18px rgba(0,0,0,.05);
+}
+
+.nav a:hover {
+  background: #EA9CAF;
+  color: white;
+  transform: translateY(-5px) rotate(-2deg);
+}
+
+.logoutBtn {
+  padding: 13px 22px;
+  background: #fff;
+  border: 2px solid #f5f5f5;
+  border-radius: 40px;
+  font-weight: 700;
+  color: #d63031;
+  cursor: pointer;
+  transition: .35s;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.logoutBtn:hover {
+  background: #d63031;
+  color: white;
+  transform: translateY(-5px) rotate(-2deg);
+}
+
+@media(max-width: 700px) {
+  .header {
+    flex-direction: column;
+    gap: 20px;
+    padding: 18px 20px;
+  }
+
+  .nav {
+    justify-content: center;
+  }
+
+  .logo {
+    font-size: 34px;
+  }
+
+  .nav a,
+  .logoutBtn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+/* --- Специфичные стили для авторизованного пользователя --- */
+
+/* Ссылка "Имя пользователя" (Профиль) */
+.profileLink {
+  /* Используем те же стили, что и у обычных ссылок, но с акцентным цветом */
+  text-decoration: none;
+  padding: 13px 22px;
+  background: #EA9CAF; /* Розовый фон, чтобы выделить пользователя */
+  border-radius: 40px;
+  font-weight: 700;
+  color: #ffffff; /* Белый текст на розовом фоне */
+  transition: .35s;
+  border: 2px solid #EA9CAF;
+  box-shadow: 0 8px 18px rgba(234, 156, 175, 0.2);
+}
+
+.profileLink:hover {
+  background: #d88a9d; /* Чуть темнее при наведении */
+  transform: translateY(-5px) rotate(-2deg);
+  box-shadow: 0 12px 25px rgba(234, 156, 175, 0.4);
+}
+
+/* Кнопка "Выйти" - делаем её более сдержанной и явной */
+.logoutBtn {
+  padding: 13px 22px;
+  background: transparent; /* Прозрачный фон */
+  border: 2px solid #e0e0e0; /* Тонкая серая рамка */
+  border-radius: 40px;
+  font-weight: 700;
+  color: #7a7a7a; /* Серый текст */
+  cursor: pointer;
+  transition: .35s;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.logoutBtn:hover {
+  background: #ffebee; /* Очень светлый красноватый фон при наведении */
+  border-color: #ffcdd2;
+  color: #d63031; /* Текст становится красным при наведении */
+  transform: translateY(-5px) rotate(-2deg);
+}

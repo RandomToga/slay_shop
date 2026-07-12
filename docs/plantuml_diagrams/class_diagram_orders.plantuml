@@ -1,0 +1,127 @@
+@startuml
+hide circle
+
+package "App orders" {
+    package "Models" {
+        ' Классы-сущности приложения
+        class PrоductCategory <<Entity>> {
+            +category_id: AutoField
+            +category_name: CharField
+            +category_description: TextField
+        }
+        class Brand <<Entity>>{
+            +brand_id: AutoField
+            +brand_name: CharField
+            +brand_country: CharField
+            +brand_description: TextField
+        }
+        class Product <<Entity>> {
+            +product_id: AutoField
+            +product_name: CharField
+            +product_description: TextField
+            +purpose: CharField
+            +price: DecimalField
+            +stock_quantity: IntegerField
+            +product_image: URLField
+        }
+    }
+    ' Связи между сущностями (Один-ко-многим)
+    Brand "1" o-- "*" Product : "поставляет"
+    PrоductCategory "1" o-- "*" Product : "содержит"
+
+    package "Serializers" {
+        class CategorySerializer <<Boundary>> {
+            +Meta.model: ProductCategory
+            +Meta.fields: tuple
+        }
+
+        class BrandSerializer <<Boundary>> {
+            +Meta.model: Brand
+            +Meta.fields: tuple
+        }
+
+        class ProductSerializer <<Boundary>> {
+            +Meta.model: Product
+            +Meta.fields: tuple
+        }
+        CategorySerializer ..> PrоductCategory : "сериализует"
+        BrandSerializer ..> Brand : "сериализует"
+        ProductSerializer ..> Product : "сериализует"
+    }
+    package "Public ViewSets (Read Only)" {
+        class PublicCategoryViewSet <<Control>> {
+            +queryset: QuerySet
+            +serializer_class: CategorySerializer
+            --
+            +list()
+            +retrieve()
+        }
+        
+        class PublicBrandViewSet <<Control>> {
+            +queryset: QuerySet
+            +serializer_class: BrandSerializer
+            --
+            +list()
+            +retrieve()
+        }
+        
+        class PublicProductViewSet <<Control>> {
+            +queryset: QuerySet
+            +serializer_class: ProductSerializer
+            --
+            +list()
+            +retrieve()
+        }
+    }
+    package "Admin ViewSets (Full CRUD)" {
+        class AdminCategoryViewSet <<Control>> {
+            +queryset: QuerySet
+            +serializer_class: CategorySerializer
+            +permission_classes: list
+            --
+            +list()
+            +retrieve()
+            +create()
+            +update()
+            +partial_update()
+            +destroy()
+        }
+        
+        class AdminBrandViewSet <<Control>> {
+            +queryset: QuerySet
+            +serializer_class: BrandSerializer
+            +permission_classes: list
+            --
+            +list()
+            +retrieve()
+            +create()
+            +update()
+            +partial_update()
+            +destroy()
+        }
+        
+        class AdminProductViewSet <<Control>> {
+            +queryset: QuerySet
+            +serializer_class: ProductSerializer
+            +permission_classes: list
+            --
+            +list()
+            +retrieve()
+            +create()
+            +update()
+            +partial_update()
+            +destroy()
+        }
+    }
+
+    ' Связи Public ViewSets -> Serializers
+    PublicCategoryViewSet --> CategorySerializer : "использует"
+    PublicBrandViewSet --> BrandSerializer : "использует"
+    PublicProductViewSet --> ProductSerializer : "использует"
+    
+    ' Связи Admin ViewSets -> Serializers
+    AdminCategoryViewSet --> CategorySerializer : "использует"
+    AdminBrandViewSet --> BrandSerializer : "использует"
+    AdminProductViewSet --> ProductSerializer : "использует"
+}
+@enduml

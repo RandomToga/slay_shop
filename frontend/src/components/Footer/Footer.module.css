@@ -1,0 +1,15 @@
+.footer {
+  margin: 120px 0 70px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  color: #888;
+  letter-spacing: 2px;
+}
+
+@media(max-width: 700px) {
+  .footer {
+    font-size: 15px;
+    margin: 70px 0 40px;
+  }
+}

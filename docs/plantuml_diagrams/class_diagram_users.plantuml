@@ -1,0 +1,140 @@
+@startuml
+hide circle
+
+package "App users" {
+    package "Models" {
+        ' Классы-сущности приложения
+        class RoleOfUser <<Entity>> {
+            +role_id: AutoField (PK)
+            +role_name: CharField(100, unique)
+            --
+            +__str__(): str
+        }
+        
+        class User <<Entity>> {
+            +user_id: AutoField (PK)
+            +first_name: CharField(100)
+            +last_name: CharField(100)
+            +email: EmailField(unique)
+            +phone: CharField(20, unique, null)
+            +password: CharField
+            +registration_date: DateTimeField(auto_now_add)
+            --
+            +USERNAME_FIELD: email
+            +REQUIRED_FIELDS: [first_name, last_name, phone]
+            +__str__(): str
+            +is_manager(): bool
+            +is_customer(): bool
+        }
+        
+        class DeliveryAddress <<Entity>> {
+            +address_id: AutoField (PK)
+            +city: CharField(100)
+            +street: CharField(100)
+            +house: CharField(20)
+            +apartment: CharField(20, null)
+            +is_deleted: BooleanField(default=False)
+            --
+            +__str__(): str
+        }
+    }
+    
+    ' Связи между сущностями
+    RoleOfUser "1" o-- "*" User : "имеет роль"
+    User "1" o-- "*" DeliveryAddress : "владеет"
+    
+    package "Serializers" {
+        class RegisterSerializer <<Boundary>> {
+            +password: CharField(write_only)
+            --
+            +Meta.model: User
+            +Meta.fields: tuple
+            +create(validated_data): User
+        }
+        
+        class UserSerializer <<Boundary>> {
+            +role_name: CharField(source, read_only)
+            --
+            +Meta.model: User
+            +Meta.fields: tuple
+        }
+        
+        class LoginSerializer <<Boundary>> {
+            --
+            +validate(attrs): dict
+        }
+        
+        class DeliveryAddressSerializer <<Boundary>> {
+            --
+            +Meta.model: DeliveryAddress
+            +Meta.fields: tuple
+            +create(validated_data): DeliveryAddress
+        }
+        
+        ' Связи Serializers -> Models
+        RegisterSerializer ..> User : "сериализует"
+        UserSerializer ..> User : "сериализует"
+        LoginSerializer ..> User : "аутентифицирует"
+        DeliveryAddressSerializer ..> DeliveryAddress : "сериализует"
+    }
+    
+    package "Views / Controllers" {
+        class RegisterView <<Control>> {
+            +queryset: QuerySet
+            +serializer_class: RegisterSerializer
+            --
+            +create(request): Response
+        }
+        
+        class LoginView <<Control>> {
+            +serializer_class: LoginSerializer
+            --
+            +post(request): Response
+        }
+        
+        class UserDetailView <<Control>> {
+            +serializer_class: UserSerializer
+            +permission_classes: [IsAuthenticated]
+            --
+            +get_object(): User
+            +get(request): Response
+            +put(request): Response
+            +patch(request): Response
+        }
+        
+        class DeliveryAddressViewSet <<Control>> {
+            +serializer_class: DeliveryAddressSerializer
+            +permission_classes: [IsAuthenticated]
+            --
+            +get_queryset(): QuerySet
+            +perform_destroy(instance): void
+            +list(): Response
+            +create(): Response
+            +retrieve(): Response
+            +update(): Response
+            +partial_update(): Response
+            +destroy(): Response
+        }
+    }
+    
+    ' Связи Views -> Serializers
+    RegisterView --> RegisterSerializer : "использует"
+    LoginView --> LoginSerializer : "использует"
+    UserDetailView --> UserSerializer : "использует"
+    DeliveryAddressViewSet --> DeliveryAddressSerializer : "использует"
+    
+    ' Легенда
+    note right of User
+        Кастомная модель пользователя
+        - USERNAME_FIELD = 'email'
+        - Используется JWT аутентификация
+        - Мягкое удаление адресов
+    end note
+    
+    note right of RegisterView
+        Автоматически назначает
+        роль "Пользователь" при
+        регистрации
+    end note
+}
+@enduml
